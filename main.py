@@ -1,4 +1,4 @@
-from flask import Flask, render_template, redirect, request
+from flask import Flask, render_template, request, redirect
 from pymongo import MongoClient
 
 client = MongoClient('mongodb://localhost:27017/')
@@ -24,7 +24,7 @@ def contactus():
     
     db.contactus.insert_one(doc)
     
-    return "Thanks for contacting"
+    return redirect('/')
 
-if __name__=='__main__':
+if __name__ == '__main__':
     app.run(debug=True, port=5000)
