@@ -1,7 +1,10 @@
 from flask import Flask, render_template, request, redirect
 from pymongo import MongoClient
+import os
 
-client = MongoClient('mongodb://localhost:27017/')
+# Get MongoDB URI from environment variable
+MONGODB_URI = os.environ.get('MONGODB_URI', 'mongodb://localhost:27017/')
+client = MongoClient(MONGODB_URI)
 db = client['Portfolio']
 
 app = Flask(__name__)
@@ -27,4 +30,6 @@ def contactus():
     return redirect('/')
 
 if __name__ == '__main__':
-    app.run(debug=True, port=5000)
+    # Get port from environment variable with a fallback
+    port = int(os.environ.get('PORT', 5000))
+    app.run(host='0.0.0.0', port=port)
