@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+  <title>My portfolio</title>
+</head>
+<body class="bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 text-gray-100">
+  <!-- Navigation -->
+  <nav class="bg-gray-900/80 backdrop-blur-sm sticky top-0 z-50 p-4 flex justify-between items-center shadow-xl">
+    <div class="flex items-center space-x-2">
+      <span class="text-white font-bold text-2xl bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">Arjun Walia</span>
+    </div>
+    <div class="hidden md:flex space-x-8">
+      <a href="#" class="text-gray-300 hover:text-blue-400 transition-all duration-300 font-medium">Home</a>
+      <a href="#about" class="text-gray-300 hover:text-blue-400 transition-all duration-300 font-medium">About</a>
+      <a href="#tech-stacks" class="text-gray-300 hover:text-blue-400 transition-all duration-300 font-medium">Experiences</a>
+      <a href="#projects" class="text-gray-300 hover:text-blue-400 transition-all duration-300 font-medium">Projects</a>
+      <a href="#contact" class="text-gray-300 hover:text-blue-400 transition-all duration-300 font-medium">Contact</a>
+    </div>
+    <button class="md:hidden text-white focus:outline-none hover:text-blue-400">☰</button>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="flex flex-col md:flex-row items-center justify-center min-h-screen px-6 py-10 space-y-10 md:space-y-0 md:space-x-10 bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900">
+    <div class="w-60 h-60 rounded-full overflow-hidden border-4 border-gray-700 md:mr-10 hover:border-blue-400 transition-all duration-500 shadow-2xl">
+      <img src={{ url_for('static', filename='sung.jpg') }} alt="Profile" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500" />
+    </div>
+    <div class="text-center md:text-left max-w-lg">
+      <p class="text-blue-400 text-lg mb-2">Hello, I'm</p>
+      <h1 class="text-5xl font-bold mb-4 bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">Arjun Walia</h1>
+      <h2 class="text-2xl text-gray-400 mb-6">FullStack Developer</h2>
+      <div class="flex justify-center md:justify-start space-x-4 mt-6">
+        <a href="path/to/cv.pdf" download class="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-all duration-300 transform hover:scale-105 shadow-lg">
+          Download CV
+        </a>
+        <a href="#contact" class="border border-blue-600 text-blue-400 px-6 py-3 rounded-lg hover:bg-blue-600/20 transition-all duration-300 transform hover:scale-105 shadow-lg">
+          Hire Me
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section id="about" class="py-16 bg-gray-900/50">
+    <div class="container mx-auto px-6 flex flex-col md:flex-row items-center md:space-x-12">
+      <div class="md:w-1/3 flex justify-center">
+        <img src={{ url_for('static', filename='sung.jpg') }} alt="Profile Picture" class="rounded-lg shadow-2xl w-80 h-80 object-cover hover:scale-105 transition-transform duration-500 border-2 border-gray-700" />
+      </div>
+      <div class="md:w-2/3 text-center md:text-left mt-8 md:mt-0">
+        <p class="text-blue-400 uppercase tracking-wide text-sm mb-2">
+          Get To Know More
+        </p>
+        <h2 class="text-4xl font-bold mb-6 bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">About Me</h2>
+        <div class="flex flex-col md:flex-row justify-center md:justify-start space-y-4 md:space-y-0 md:space-x-6">
+          <div class="bg-gray-800/50 p-6 rounded-xl shadow-xl text-center w-full md:w-1/2 border border-gray-700 hover:border-blue-400 transition-all duration-300">
+            <span class="text-3xl mb-4">🏅</span>
+            <h3 class="font-bold text-lg mb-2">Experience</h3>
+            <p class="text-blue-400 text-xl">1+ years</p>
+            <p class="text-gray-400 text-sm">Frontend Development</p>
+          </div>
+          <div class="bg-gray-800/50 p-6 rounded-xl shadow-xl text-center w-full md:w-1/2 border border-gray-700 hover:border-blue-400 transition-all duration-300">
+            <span class="text-3xl mb-4">👥</span>
+            <h3 class="font-bold text-lg mb-2">Education</h3>
+            <p class="text-blue-400 text-xl">B.Tech</p>
+            <p class="text-gray-400 text-sm">Information Technology</p>
+          </div>
+        </div>
+        <p class="text-gray-300 mt-8 leading-relaxed max-w-2xl">
+          Passionate full-stack developer with expertise in modern web technologies. Specializing in creating responsive, user-friendly applications with robust backend systems. Continuously learning and implementing cutting-edge solutions.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Tech Stacks Section -->
+  <section id="tech-stacks" class="py-16 bg-gray-900/50">
+    <div class="container mx-auto px-6 text-center">
+      <h2 class="text-4xl font-bold mb-8 bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">Tech Stacks</h2>
+      <div class="grid grid-cols-3 md:grid-cols-6 gap-6 max-w-4xl mx-auto">
+        <!-- HTML5 -->
+        <div class="p-4 bg-gray-800/50 rounded-xl hover:bg-gray-700/50 transition-all duration-300 border border-gray-700 hover:border-blue-400">
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" 
+               class="w-12 h-12 mx-auto filter grayscale hover:grayscale-0 transition-all duration-300"
+               alt="HTML5" />
+        </div>
+        <!-- CSS3 -->
+        <div class="p-4 bg-gray-800/50 rounded-xl hover:bg-gray-700/50 transition-all duration-300 border border-gray-700 hover:border-blue-400">
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" 
+               class="w-12 h-12 mx-auto filter grayscale hover:grayscale-0 transition-all duration-300"
+               alt="CSS3" />
+        </div>
+        <!-- JavaScript -->
+        <div class="p-4 bg-gray-800/50 rounded-xl hover:bg-gray-700/50 transition-all duration-300 border border-gray-700 hover:border-blue-400">
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" 
+               class="w-12 h-12 mx-auto filter grayscale hover:grayscale-0 transition-all duration-300"
+               alt="JavaScript" />
+        </div>
+        <!-- React -->
+        <div class="p-4 bg-gray-800/50 rounded-xl hover:bg-gray-700/50 transition-all duration-300 border border-gray-700 hover:border-blue-400">
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" 
+               class="w-12 h-12 mx-auto filter grayscale hover:grayscale-0 transition-all duration-300"
+               alt="React" />
+        </div>
+        <!-- Node.js -->
+        <div class="p-4 bg-gray-800/50 rounded-xl hover:bg-gray-700/50 transition-all duration-300 border border-gray-700 hover:border-blue-400">
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" 
+               class="w-12 h-12 mx-auto filter grayscale hover:grayscale-0 transition-all duration-300"
+               alt="Node.js" />
+        </div>
+        <!-- Express -->
+        <div class="p-4 bg-gray-800/50 rounded-xl hover:bg-gray-700/50 transition-all duration-300 border border-gray-700 hover:border-blue-400">
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg" 
+               class="w-12 h-12 mx-auto filter grayscale hover:grayscale-0 transition-all duration-300"
+               alt="Express" />
+        </div>
+        <!-- MongoDB -->
+        <div class="p-4 bg-gray-800/50 rounded-xl hover:bg-gray-700/50 transition-all duration-300 border border-gray-700 hover:border-blue-400">
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg" 
+               class="w-12 h-12 mx-auto filter grayscale hover:grayscale-0 transition-all duration-300"
+               alt="MongoDB" />
+        </div>
+        <!-- Python -->
+        <div class="p-4 bg-gray-800/50 rounded-xl hover:bg-gray-700/50 transition-all duration-300 border border-gray-700 hover:border-blue-400">
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" 
+               class="w-12 h-12 mx-auto filter grayscale hover:grayscale-0 transition-all duration-300"
+               alt="Python" />
+        </div>
+        <!-- C++ -->
+        <div class="p-4 bg-gray-800/50 rounded-xl hover:bg-gray-700/50 transition-all duration-300 border border-gray-700 hover:border-blue-400">
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cplusplus/cplusplus-original.svg" 
+               class="w-12 h-12 mx-auto filter grayscale hover:grayscale-0 transition-all duration-300"
+               alt="C++" />
+        </div>
+        <!-- MySQL -->
+        <div class="p-4 bg-gray-800/50 rounded-xl hover:bg-gray-700/50 transition-all duration-300 border border-gray-700 hover:border-blue-400">
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" 
+               class="w-12 h-12 mx-auto filter grayscale hover:grayscale-0 transition-all duration-300"
+               alt="MySQL" />
+        </div>
+        <!-- TypeScript -->
+        <div class="p-4 bg-gray-800/50 rounded-xl hover:bg-gray-700/50 transition-all duration-300 border border-gray-700 hover:border-blue-400">
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg" 
+               class="w-12 h-12 mx-auto filter grayscale hover:grayscale-0 transition-all duration-300"
+               alt="TypeScript" />
+        </div>
+        <!-- Tailwind CSS -->
+        <div class="p-4 bg-gray-800/50 rounded-xl hover:bg-gray-700/50 transition-all duration-300 border border-gray-700 hover:border-blue-400">
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/tailwindcss/tailwindcss-original.svg"
+               class="w-12 h-12 mx-auto filter grayscale hover:grayscale-0 transition-all duration-300"
+               alt="Tailwind CSS" />
+        </div>
+        <!-- Git -->
+        <div class="p-4 bg-gray-800/50 rounded-xl hover:bg-gray-700/50 transition-all duration-300 border border-gray-700 hover:border-blue-400">
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" 
+               class="w-12 h-12 mx-auto filter grayscale hover:grayscale-0 transition-all duration-300"
+               alt="Git" />
+        </div>
+        <!-- GitHub -->
+        <div class="p-4 bg-gray-800/50 rounded-xl hover:bg-gray-700/50 transition-all duration-300 border border-gray-700 hover:border-blue-400">
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" 
+               class="w-12 h-12 mx-auto filter grayscale hover:grayscale-0 transition-all duration-300"
+               alt="GitHub" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects Section -->
+  <section id="projects" class="py-16 bg-gray-900/50">
+    <div class="container mx-auto px-6">
+      <h2 class="text-4xl font-bold mb-12 text-center bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">Projects</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div class="bg-gray-800/50 p-6 rounded-xl border border-gray-700 hover:border-blue-400 transition-all duration-300 hover:-translate-y-2 shadow-xl">
+          <img src={{ url_for('static', filename='Project1.png') }} alt="Project One" class="w-full h-48 object-cover rounded-lg mb-4" />
+          <h3 class="text-2xl font-bold mb-4 text-blue-400">ThinkEd</h3>
+          <p class="text-gray-300 mb-4">
+            Modern E-learning platform for students to take classes, tests, and quizzes. Built with HTML, CSS, JavaScrip, Express, Nodejs and Express.
+          </p>
+          <a class="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition-all duration-300" href="https://github.com/Arjun-Walia/Cyber-Cypher">
+            View Project
+          </a>
+        </div>
+        <div class="bg-gray-800/50 p-6 rounded-xl border border-gray-700 hover:border-blue-400 transition-all duration-300 hover:-translate-y-2 shadow-xl">
+          <img src={{ url_for('static', filename='Project2.png') }} alt="Project One" class="w-full h-48 object-cover rounded-lg mb-4" />
+          <h3 class="text-2xl font-bold mb-4 text-blue-400">ExchangeX</h3>
+          <p class="text-gray-300 mb-4">
+            Modern trading platform for users to Exchange their items for someone else's item. Built with React, Nodejs, Express, and MongoDB.
+          </p>
+          <a class="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition-all duration-300" hreff="https://github.com/Arjun-Walia/Virtual-Barter-Market">
+            View Project
+          </a>
+        </div>
+        <div class="bg-gray-800/50 p-6 rounded-xl border border-gray-700 hover:border-blue-400 transition-all duration-300 hover:-translate-y-2 shadow-xl">
+          <img src={{ url_for('static', filename='Project3.png') }} alt="Project One" class="w-full h-48 object-cover rounded-lg mb-4" />
+          <h3 class="text-2xl font-bold mb-4 text-blue-400">HealthCare Chatbot</h3>
+          <p class="text-gray-300 mb-4">
+            A chatbot that helps users to give cure or advice about their health. built with Html, CSS, JavaScript, Node and Express.
+          </p>
+          <a class="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition-all duration-300" href="https://github.com/Arjun-Walia/Healthcare-chatbot">
+            View Project
+          </a>
+        </div>
+      </div>
+    </div>  
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="py-16 bg-gray-900/50">
+    <div class="container mx-auto px-6">
+      <h2 class="text-4xl font-bold mb-12 text-center bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">Contact Me</h2>
+      <form class="max-w-lg mx-auto bg-gray-800/50 p-8 rounded-xl shadow-xl border border-gray-700">
+        <div class="mb-6">
+          <input type="text" id="name" placeholder="Name" 
+                 class="w-full px-4 py-3 bg-gray-900/50 border border-gray-700 rounded-lg text-gray-100 focus:outline-none focus:border-blue-400 transition-all duration-300" action="/contactus" methods="post" />
+        </div>
+        <div class="mb-6">
+          <input type="email" id="email" placeholder="Email" 
+                 class="w-full px-4 py-3 bg-gray-900/50 border border-gray-700 rounded-lg text-gray-100 focus:outline-none focus:border-blue-400 transition-all duration-300" action="/contactus" methods="post"/>
+        </div>
+        <div class="mb-8">
+          <textarea id="message" rows="4" placeholder="Message"
+                    class="w-full px-4 py-3 bg-gray-900/50 border border-gray-700 rounded-lg text-gray-100 focus:outline-none focus:border-blue-400 transition-all duration-300" action="/contactus" methods="post"></textarea>
+        </div>
+        <button type="submit" class="w-full bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-all duration-300 transform hover:scale-105">
+          Send Message
+        </button>
+      </form>
+    </div>
+  </section>
+  
+</body>
+</html>
