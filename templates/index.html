@@ -7,8 +7,83 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <title>My Portfolio</title>
 </head>
+<style>
+  /* Ensure the video covers the entire background */
+  /* Custom Scrollbar */
+  html {
+    scroll-behavior: smooth;
+  }
+
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.05);
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: linear-gradient(45deg, #60a5fa, #8b5cf6);
+    border-radius: 4px;
+  }
+
+  @keyframes slideUp {
+    from {
+      opacity: 0;
+      transform: translateY(50px);
+    }
+
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .scroll-animate {
+    animation: slideUp 0.6s ease-out forwards;
+  }
+
+  #video-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
+    /* Place it behind other content */
+  }
+
+  /* Add a dark overlay to make text readable */
+  .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    /* Adjust opacity as needed */
+    z-index: 0;
+    /* Place it above the video but below the content */
+  }
+
+  /* Ensure content is above the overlay and video */
+  .content {
+    position: relative;
+    z-index: 1;
+  }
+</style>
 
 <body class="bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 text-gray-100">
+  <!-- Video Background -->
+  <video id="video-background" autoplay muted loop>
+    <source src="{{ url_for('static', filename='Bg-Space.mp4') }}" type="video/mp4" />
+    Your browser does not support the video tag.
+  </video>
+
+  <!-- Dark Overlay -->
+  <div class="overlay"></div>
+
   <!-- Navigation -->
   <nav class="bg-gray-900/80 backdrop-blur-sm sticky top-0 z-50 p-4 flex justify-between items-center shadow-xl">
     <div class="flex items-center space-x-2">
@@ -28,7 +103,7 @@
   </nav>
 
   <!-- Mobile Menu -->
-  <div id="mobileMenu" class="md:hidden hidden bg-gray-900/80 backdrop-blur-sm p-4">
+  <div id="mobileMenu" class="md:hidden hidden bg-gray-900/80 backdrop-blur-sm p-4 fixed right-0">
     <a href="#" class="block text-gray-300 hover:text-blue-400 transition-all duration-300 font-medium mb-2">Home</a>
     <a href="#about"
       class="block text-gray-300 hover:text-blue-400 transition-all duration-300 font-medium mb-2">About</a>
@@ -42,7 +117,7 @@
 
   <!-- Hero Section -->
   <section
-    class="flex flex-col md:flex-row items-center justify-center min-h-screen px-6 py-10 space-y-10 md:space-y-0 md:space-x-10 bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900">
+    class="flex flex-col md:flex-row items-center justify-center min-h-screen px-6 py-10 space-y-10 md:space-y-0 md:space-x-10 bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 ">
     <div
       class="w-60 h-60 rounded-full overflow-hidden border-4 border-gray-700 md:mr-10 hover:border-blue-400 transition-all duration-500 shadow-2xl">
       <img src="{{ url_for('static', filename='sung.jpg') }}" alt="Profile"
@@ -85,14 +160,14 @@
             <span class="text-3xl mb-4">🏅</span>
             <h3 class="font-bold text-lg mb-2">Experience</h3>
             <p class="text-blue-400 text-xl">1+ years</p>
-            <p class="text-gray-400 text-sm">Frontend Development</p>
+            <p class="text-gray-400 text-sm">FullStack Development</p>
           </div>
           <div
             class="bg-gray-800/50 p-6 rounded-xl shadow-xl text-center w-full md:w-1/2 border border-gray-700 hover:border-blue-400 transition-all duration-300">
             <span class="text-3xl mb-4">👥</span>
             <h3 class="font-bold text-lg mb-2">Education</h3>
             <p class="text-blue-400 text-xl">B.Tech</p>
-            <p class="text-gray-400 text-sm">Information Technology</p>
+            <p class="text-gray-400 text-sm">Computer Science Engineering</p>
           </div>
         </div>
         <p class="text-gray-300 mt-8 leading-relaxed max-w-2xl">
@@ -202,40 +277,54 @@
   <!-- Projects Section -->
   <section id="projects" class="py-16 bg-gray-900/50">
     <div class="container mx-auto px-6">
-      <h2 class="text-4xl font-bold mb-12 text-center bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">Projects</h2>
+      <h2
+        class="text-4xl font-bold mb-12 text-center bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">
+        Projects</h2>
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        <div class="bg-gray-800/50 p-6 rounded-xl border border-gray-700 hover:border-blue-400 transition-all duration-300 hover:-translate-y-2 shadow-xl">
-          <img src={{ url_for('static', filename='Project1.png') }} alt="Project One" class="w-full h-48 object-cover rounded-lg mb-4" />
+        <div
+          class="bg-gray-800/50 p-6 rounded-xl border border-gray-700 hover:border-blue-400 transition-all duration-300 hover:-translate-y-2 shadow-xl">
+          <img src={{ url_for('static', filename='Project1.png' ) }} alt="Project One"
+            class="w-full h-48 object-cover rounded-lg mb-4" />
           <h3 class="text-2xl font-bold mb-4 text-blue-400">ThinkEd</h3>
           <p class="text-gray-300 mb-4">
-            Modern E-learning platform for students to take classes, tests, and quizzes. Built with HTML, CSS, JavaScrip, Express, Nodejs and Express.
+            Modern E-learning platform for students to take classes, tests, and quizzes. Built with HTML, CSS,
+            JavaScrip, Express, Nodejs and Express.
           </p>
-          <a class="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition-all duration-300" href="https://github.com/Arjun-Walia/Cyber-Cypher">
+          <a class="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition-all duration-300"
+            href="https://github.com/Arjun-Walia/Cyber-Cypher">
             View Project
           </a>
         </div>
-        <div class="bg-gray-800/50 p-6 rounded-xl border border-gray-700 hover:border-blue-400 transition-all duration-300 hover:-translate-y-2 shadow-xl">
-          <img src={{ url_for('static', filename='Project2.png') }} alt="Project One" class="w-full h-48 object-cover rounded-lg mb-4" />
+        <div
+          class="bg-gray-800/50 p-6 rounded-xl border border-gray-700 hover:border-blue-400 transition-all duration-300 hover:-translate-y-2 shadow-xl">
+          <img src={{ url_for('static', filename='Project2.png' ) }} alt="Project One"
+            class="w-full h-48 object-cover rounded-lg mb-4" />
           <h3 class="text-2xl font-bold mb-4 text-blue-400">ExchangeX</h3>
           <p class="text-gray-300 mb-4">
-            Modern trading platform for users to Exchange their items for someone else's item. Built with React, Nodejs, Express, and MongoDB.
+            Modern trading platform for users to Exchange their items for someone else's item. Built with React, Nodejs,
+            Express, and MongoDB.
           </p>
-          <a class="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition-all duration-300" hreff="https://github.com/Arjun-Walia/Virtual-Barter-Market">
+          <a class="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition-all duration-300"
+            hreff="https://github.com/Arjun-Walia/Virtual-Barter-Market">
             View Project
           </a>
         </div>
-        <div class="bg-gray-800/50 p-6 rounded-xl border border-gray-700 hover:border-blue-400 transition-all duration-300 hover:-translate-y-2 shadow-xl">
-          <img src={{ url_for('static', filename='Project3.png') }} alt="Project One" class="w-full h-48 object-cover rounded-lg mb-4" />
+        <div
+          class="bg-gray-800/50 p-6 rounded-xl border border-gray-700 hover:border-blue-400 transition-all duration-300 hover:-translate-y-2 shadow-xl">
+          <img src={{ url_for('static', filename='Project3.png' ) }} alt="Project One"
+            class="w-full h-48 object-cover rounded-lg mb-4" />
           <h3 class="text-2xl font-bold mb-4 text-blue-400">HealthCare Chatbot</h3>
           <p class="text-gray-300 mb-4">
-            A chatbot that helps users to give cure or advice about their health. built with Html, CSS, JavaScript, Node and Express.
+            A chatbot that helps users to give cure or advice about their health. built with Html, CSS, JavaScript, Node
+            and Express.
           </p>
-          <a class="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition-all duration-300" href="https://github.com/Arjun-Walia/Healthcare-chatbot">
+          <a class="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition-all duration-300"
+            href="https://github.com/Arjun-Walia/Healthcare-chatbot">
             View Project
           </a>
         </div>
       </div>
-    </div>  
+    </div>
   </section>
 
   <!-- Contact Section -->
