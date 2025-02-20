@@ -5,10 +5,10 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="icon" href="{{ url_for('static', filename='sung.jpg') }}">
   <title>My Portfolio</title>
 </head>
 <style>
-  /* Ensure the video covers the entire background */
   /* Custom Scrollbar */
   html {
     scroll-behavior: smooth;
@@ -51,10 +51,8 @@
     height: 100%;
     object-fit: cover;
     z-index: -1;
-    /* Place it behind other content */
   }
 
-  /* Add a dark overlay to make text readable */
   .overlay {
     position: absolute;
     top: 0;
@@ -62,12 +60,9 @@
     width: 100%;
     height: 100%;
     background: rgba(0, 0, 0, 0.5);
-    /* Adjust opacity as needed */
     z-index: 0;
-    /* Place it above the video but below the content */
   }
 
-  /* Ensure content is above the overlay and video */
   .content {
     position: relative;
     z-index: 1;
@@ -129,7 +124,7 @@
         Arjun Walia</h1>
       <h2 class="text-2xl text-gray-400 mb-6">FullStack Developer</h2>
       <div class="flex justify-center md:justify-start space-x-4 mt-6">
-        <a href="path/to/cv.pdf" download
+        <a href="{{ url_for('static', filename='cv.pdf')}}" download
           class="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-all duration-300 transform hover:scale-105 shadow-lg">
           Download CV
         </a>
@@ -288,7 +283,7 @@
           <h3 class="text-2xl font-bold mb-4 text-blue-400">ThinkEd</h3>
           <p class="text-gray-300 mb-4">
             Modern E-learning platform for students to take classes, tests, and quizzes. Built with HTML, CSS,
-            JavaScrip, Express, Nodejs and Express.
+            JavaScript, Nodejs and Express.
           </p>
           <a class="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition-all duration-300"
             href="https://github.com/Arjun-Walia/Cyber-Cypher">
