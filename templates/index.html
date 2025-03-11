@@ -2,378 +2,649 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <script src="https://cdn.tailwindcss.com"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Full Stack Developer Portfolio</title>
+  <script src="https://cdn.tailwindcss.com">
+  </script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: "#00f2ff",
+            secondary: "#bf00ff",
+          },
+          borderRadius: {
+            none: "0px",
+            sm: "4px",
+            DEFAULT: "8px",
+            md: "12px",
+            lg: "16px",
+            xl: "20px",
+            "2xl": "24px",
+            "3xl": "32px",
+            full: "9999px",
+            button: "8px",
+          },
+        },
+      },
+    };
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet">
   <link rel="icon" href="{{ url_for('static', filename='sung.jpg') }}">
-  <title>My Portfolio</title>
-</head>
-<style>
-  /* Custom Scrollbar */
-  html {
-    scroll-behavior: smooth;
-  }
+  <style>
+    :where([class^="ri-"])::before {
+      content: "\f3c2";
+    }
 
-  ::-webkit-scrollbar {
-    width: 8px;
-  }
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 4rem;
+    }
 
-  ::-webkit-scrollbar-track {
-    background: rgba(255, 255, 255, 0.05);
-  }
+    body {
+      font-family: 'Space Grotesk', sans-serif;
+    }
 
-  ::-webkit-scrollbar-thumb {
-    background: linear-gradient(45deg, #60a5fa, #8b5cf6);
-    border-radius: 4px;
-  }
+    .galaxy-bg {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(ellipse at bottom, #1B2735 0%, #090A0F 100%);
+      overflow: hidden;
+      z-index: -1;
+    }
 
-  @keyframes slideUp {
-    from {
+    .stars {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background-image:
+        radial-gradient(2px 2px at 20px 30px, #eee, rgba(0, 0, 0, 0)),
+        radial-gradient(2px 2px at 40px 70px, #fff, rgba(0, 0, 0, 0)),
+        radial-gradient(2px 2px at 50px 160px, #ddd, rgba(0, 0, 0, 0)),
+        radial-gradient(2px 2px at 90px 40px, #fff, rgba(0, 0, 0, 0)),
+        radial-gradient(2px 2px at 130px 80px, #fff, rgba(0, 0, 0, 0)),
+        radial-gradient(2px 2px at 160px 120px, #ddd, rgba(0, 0, 0, 0));
+      background-repeat: repeat;
+      background-size: 200px 200px;
+      animation: zoom 5s infinite;
+      opacity: 0.3;
+    }
+
+    @keyframes zoom {
+      0% {
+        transform: scale(1);
+      }
+
+      50% {
+        transform: scale(1.5);
+      }
+
+      100% {
+        transform: scale(1);
+      }
+    }
+
+    #shooting-stars {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+    }
+
+    .star {
+      position: absolute;
+      background: white;
+      border-radius: 50%;
+      box-shadow: 0 0 4px #fff, 0 0 8px #fff;
+    }
+
+    @keyframes shootingStars {
+      from {
+        transform: translate(0, 0) rotate(45deg);
+        opacity: 1;
+      }
+
+      to {
+        transform: translate(200px, 200px) rotate(45deg);
+        opacity: 0;
+      }
+    }
+
+    @keyframes slideInFromLeft {
+      0% {
+        transform: translateX(-100px);
+        opacity: 0;
+      }
+
+      100% {
+        transform: translateX(0);
+        opacity: 1;
+      }
+    }
+
+    @keyframes slideInFromRight {
+      0% {
+        transform: translateX(100px);
+        opacity: 0;
+      }
+
+      100% {
+        transform: translateX(0);
+        opacity: 1;
+      }
+    }
+
+    @keyframes fadeIn {
+      0% {
+        opacity: 0;
+      }
+
+      100% {
+        opacity: 1;
+      }
+    }
+
+    @keyframes pulse {
+      0% {
+        transform: scale(1);
+      }
+
+      50% {
+        transform: scale(1.05);
+      }
+
+      100% {
+        transform: scale(1);
+      }
+    }
+
+    .animate-slide-left {
+      animation: slideInFromLeft 0.8s ease-out forwards;
+    }
+
+    .animate-slide-right {
+      animation: slideInFromRight 0.8s ease-out forwards;
+    }
+
+    .animate-fade-in {
+      animation: fadeIn 1s ease-out forwards;
+    }
+
+    .animate-pulse {
+      animation: pulse 2s infinite;
+    }
+
+    h1,
+    h2,
+    h3 {
+      font-family: 'Orbitron', sans-serif;
+      letter-spacing: 0.05em;
+    }
+
+    @keyframes float {
+      0% {
+        transform: translateY(0px);
+      }
+
+      50% {
+        transform: translateY(-20px);
+      }
+
+      100% {
+        transform: translateY(0px);
+      }
+    }
+
+    .floating {
+      animation: float 3s ease-in-out infinite;
+    }
+
+    .gradient-text {
+      background: linear-gradient(90deg, #00f2ff, #bf00ff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .glow {
+      box-shadow: 0 0 20px rgba(0, 242, 255, 0.3),
+        inset 0 0 20px rgba(0, 242, 255, 0.2);
+      transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+      position: relative;
+    }
+
+    .glow:hover {
+      box-shadow: 0 0 40px rgba(0, 242, 255, 0.6),
+        inset 0 0 40px rgba(0, 242, 255, 0.4);
+      transform: scale(1.02);
+    }
+
+    .glow::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      padding: 2px;
+      background: linear-gradient(45deg, rgba(0, 242, 255, 0.3), rgba(191, 0, 255, 0.3));
+      mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      mask-composite: exclude;
       opacity: 0;
-      transform: translateY(50px);
+      transition: opacity 0.5s ease;
     }
 
-    to {
+    .glow:hover::after {
       opacity: 1;
-      transform: translateY(0);
     }
-  }
+  </style>
+</head>
 
-  .scroll-animate {
-    animation: slideUp 0.6s ease-out forwards;
-  }
-
-  #video-background {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    z-index: -1;
-  }
-
-  .overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.5);
-    z-index: 0;
-  }
-
-  .content {
-    position: relative;
-    z-index: 1;
-  }
-</style>
-
-<body class="bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 text-gray-100">
-  <!-- Video Background -->
-  <video id="video-background" autoplay muted loop>
-    <source src="{{ url_for('static', filename='Bg-Space.mp4') }}" type="video/mp4" />
-    Your browser does not support the video tag.
-  </video>
-
-  <!-- Dark Overlay -->
-  <div class="overlay"></div>
-
-  <!-- Navigation -->
-  <nav class="bg-gray-900/80 backdrop-blur-sm sticky top-0 z-50 p-4 flex justify-between items-center shadow-xl">
-    <div class="flex items-center space-x-2">
-      <span
-        class="text-white font-bold text-2xl bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">Arjun
-        Walia</span>
-    </div>
-    <div class="hidden md:flex space-x-8">
-      <a href="#" class="text-gray-300 hover:text-blue-400 transition-all duration-300 font-medium">Home</a>
-      <a href="#about" class="text-gray-300 hover:text-blue-400 transition-all duration-300 font-medium">About</a>
-      <a href="#tech-stacks"
-        class="text-gray-300 hover:text-blue-400 transition-all duration-300 font-medium">Experiences</a>
-      <a href="#projects" class="text-gray-300 hover:text-blue-400 transition-all duration-300 font-medium">Projects</a>
-      <a href="#contact" class="text-gray-300 hover:text-blue-400 transition-all duration-300 font-medium">Contact</a>
-    </div>
-    <button class="md:hidden text-white focus:outline-none hover:text-blue-400" onclick="toggleMenu()">☰</button>
-  </nav>
-
-  <!-- Mobile Menu -->
-  <div id="mobileMenu" class="md:hidden hidden bg-gray-900/80 backdrop-blur-sm p-4 fixed right-0">
-    <a href="#" class="block text-gray-300 hover:text-blue-400 transition-all duration-300 font-medium mb-2">Home</a>
-    <a href="#about"
-      class="block text-gray-300 hover:text-blue-400 transition-all duration-300 font-medium mb-2">About</a>
-    <a href="#tech-stacks"
-      class="block text-gray-300 hover:text-blue-400 transition-all duration-300 font-medium mb-2">Experiences</a>
-    <a href="#projects"
-      class="block text-gray-300 hover:text-blue-400 transition-all duration-300 font-medium mb-2">Projects</a>
-    <a href="#contact"
-      class="block text-gray-300 hover:text-blue-400 transition-all duration-300 font-medium">Contact</a>
+<body class="bg-[#090A0F] min-h-screen text-gray-100 relative">
+  <div class="galaxy-bg fixed inset-0 -z-10">
+    <div class="stars"></div>
+    <div id="shooting-stars"></div>
   </div>
-
-  <!-- Hero Section -->
-  <section
-    class="flex flex-col md:flex-row items-center justify-center min-h-screen px-6 py-10 space-y-10 md:space-y-0 md:space-x-10 bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 ">
-    <div
-      class="w-60 h-60 rounded-full overflow-hidden border-4 border-gray-700 md:mr-10 hover:border-blue-400 transition-all duration-500 shadow-2xl">
-      <img src="{{ url_for('static', filename='sung.jpg') }}" alt="Profile"
-        class="w-full h-full object-cover hover:scale-105 transition-transform duration-500" />
-    </div>
-    <div class="text-center md:text-left max-w-lg">
-      <p class="text-blue-400 text-lg mb-2">Hello, I'm</p>
-      <h1 class="text-5xl font-bold mb-4 bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">
-        Arjun Walia</h1>
-      <h2 class="text-2xl text-gray-400 mb-6">FullStack Developer</h2>
-      <div class="flex justify-center md:justify-start space-x-4 mt-6">
-        <a href="{{ url_for('static', filename='cv.pdf')}}" download
-          class="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-all duration-300 transform hover:scale-105 shadow-lg">
-          Download CV
-        </a>
-        <a href="#contact"
-          class="border border-blue-600 text-blue-400 px-6 py-3 rounded-lg hover:bg-blue-600/20 transition-all duration-300 transform hover:scale-105 shadow-lg">
-          Hire Me
-        </a>
+  <nav class="fixed w-full bg-[#0F1118]/90 backdrop-blur-sm z-50 border-b border-[#1B2735]">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between h-16">
+        <div class="flex items-center">
+          <span class="font-['Pacifico'] text-2xl gradient-text">Arjun Walia</span>
+        </div>
+        <div class="hidden md:flex items-center space-x-8">
+          <a href="#home" class="text-gray-300 hover:text-primary transition-colors cursor-pointer">Home</a>
+          <a href="#about" class="text-gray-300 hover:text-primary transition-colors cursor-pointer">About</a>
+          <a href="#skills" class="text-gray-300 hover:text-primary transition-colors cursor-pointer">Skills</a>
+          <a href="#projects" class="text-gray-300 hover:text-primary transition-colors cursor-pointer">Projects</a>
+          <a href="#contact" class="text-gray-300 hover:text-primary transition-colors cursor-pointer">Contact</a>
+        </div>
       </div>
     </div>
-  </section>
-
-  <!-- About Section -->
-  <section id="about" class="py-16 bg-gray-900/50">
-    <div class="container mx-auto px-6 flex flex-col md:flex-row items-center md:space-x-12">
-      <div class="md:w-1/3 flex justify-center">
-        <img src="{{ url_for('static', filename='sung.jpg') }}" alt="Profile Picture"
-          class="rounded-lg shadow-2xl w-80 h-80 object-cover hover:scale-105 transition-transform duration-500 border-2 border-gray-700" />
-      </div>
-      <div class="md:w-2/3 text-center md:text-left mt-8 md:mt-0">
-        <p class="text-blue-400 uppercase tracking-wide text-sm mb-2">
-          Get To Know More
-        </p>
-        <h2 class="text-4xl font-bold mb-6 bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">
-          About Me</h2>
-        <div class="flex flex-col md:flex-row justify-center md:justify-start space-y-4 md:space-y-0 md:space-x-6">
-          <div
-            class="bg-gray-800/50 p-6 rounded-xl shadow-xl text-center w-full md:w-1/2 border border-gray-700 hover:border-blue-400 transition-all duration-300">
-            <span class="text-3xl mb-4">🏅</span>
-            <h3 class="font-bold text-lg mb-2">Experience</h3>
-            <p class="text-blue-400 text-xl">1+ years</p>
-            <p class="text-gray-400 text-sm">FullStack Development</p>
+  </nav>
+  <section id="home" class="pt-16 min-h-screen flex items-center relative overflow-hidden parallax-container">
+    <div class="parallax-base">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center w-full max-w-6xl mx-auto">
+          <!-- Text Content -->
+          <div class="text-left order-1 md:order-1">
+            <h1 class="text-6xl font-bold mb-6 gradient-text tracking-wider">Full Stack Developer</h1>
+            <p class="text-xl text-gray-400 mb-8 tracking-wide">
+              Crafting innovative digital solutions with modern technologies. Specialized in creating responsive, user-friendly web applications with both frontend and backend expertise.
+            </p>
+            <div class="flex gap-4">
+              <button class="bg-[#8A6FE8] text-white px-8 py-3 rounded-button hover:opacity-90 transition-all duration-300 hover:scale-110 hover:shadow-lg hover:shadow-[#8A6FE8]/30 cursor-pointer animate-pulse">
+                View Projects
+              </button>
+              <button class="border-2 border-[#8A6FE8] text-[#8A6FE8] px-8 py-3 rounded-button hover:bg-[#8A6FE8] hover:text-white transition-all duration-300 hover:scale-110 hover:shadow-lg hover:shadow-[#8A6FE8]/30 cursor-pointer">
+                Contact Me
+              </button>
+            </div>
           </div>
-          <div
-            class="bg-gray-800/50 p-6 rounded-xl shadow-xl text-center w-full md:w-1/2 border border-gray-700 hover:border-blue-400 transition-all duration-300">
-            <span class="text-3xl mb-4">👥</span>
-            <h3 class="font-bold text-lg mb-2">Education</h3>
-            <p class="text-blue-400 text-xl">B.Tech</p>
-            <p class="text-gray-400 text-sm">Computer Science Engineering</p>
+  
+          <!-- Profile Image -->
+          <div class="flex justify-center md:justify-end order-2 md:order-2">
+            <img src="{{ url_for('static', filename='profile.jpg') }}" alt="Developer"
+              class="w-64 h-64 object-cover rounded-lg shadow-lg" />
           </div>
         </div>
-        <p class="text-gray-300 mt-8 leading-relaxed max-w-2xl">
-          Passionate full-stack developer with expertise in modern web technologies. Specializing in creating
-          responsive, user-friendly applications with robust backend systems. Continuously learning and implementing
-          cutting-edge solutions.
-        </p>
       </div>
     </div>
   </section>
-
-  <!-- Tech Stacks Section -->
-  <section id="tech-stacks" class="py-16 bg-gray-900/50">
-    <div class="container mx-auto px-6 text-center">
-      <h2 class="text-4xl font-bold mb-8 bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">
-        Tech Stacks</h2>
-      <div class="grid grid-cols-3 md:grid-cols-6 gap-6 max-w-4xl mx-auto">
-        <!-- Tech Stack Icons -->
-        <div
-          class="p-4 bg-gray-800/50 rounded-xl hover:bg-gray-700/50 transition-all duration-300 border border-gray-700 hover:border-blue-400">
-          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg"
-            class="w-12 h-12 mx-auto filter grayscale hover:grayscale-0 transition-all duration-300" alt="HTML5" />
+  <section id="about" class="py-20 relative z-10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center">
+      <h2 class="text-4xl font-bold text-center mb-16 gradient-text tracking-widest uppercase">About Me</h2>
+      <div class="grid md:grid-cols-2 gap-16 items-center w-full">
+        <div>
+          <img src="https://public.readdy.ai/ai/img_res/aac2fc90111a029bd4bdbadfa0c6bd51.jpg"
+            class="rounded-lg shadow-lg glow" />
         </div>
-        <!-- CSS3 -->
-        <div
-          class="p-4 bg-gray-800/50 rounded-xl hover:bg-gray-700/50 transition-all duration-300 border border-gray-700 hover:border-blue-400">
-          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg"
-            class="w-12 h-12 mx-auto filter grayscale hover:grayscale-0 transition-all duration-300" alt="CSS3" />
-        </div>
-        <!-- JavaScript -->
-        <div
-          class="p-4 bg-gray-800/50 rounded-xl hover:bg-gray-700/50 transition-all duration-300 border border-gray-700 hover:border-blue-400">
-          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg"
-            class="w-12 h-12 mx-auto filter grayscale hover:grayscale-0 transition-all duration-300" alt="JavaScript" />
-        </div>
-        <!-- React -->
-        <div
-          class="p-4 bg-gray-800/50 rounded-xl hover:bg-gray-700/50 transition-all duration-300 border border-gray-700 hover:border-blue-400">
-          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg"
-            class="w-12 h-12 mx-auto filter grayscale hover:grayscale-0 transition-all duration-300" alt="React" />
-        </div>
-        <!-- Node.js -->
-        <div
-          class="p-4 bg-gray-800/50 rounded-xl hover:bg-gray-700/50 transition-all duration-300 border border-gray-700 hover:border-blue-400">
-          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg"
-            class="w-12 h-12 mx-auto filter grayscale hover:grayscale-0 transition-all duration-300" alt="Node.js" />
-        </div>
-        <!-- Express -->
-        <div
-          class="p-4 bg-gray-800/50 rounded-xl hover:bg-gray-700/50 transition-all duration-300 border border-gray-700 hover:border-blue-400">
-          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg"
-            class="w-12 h-12 mx-auto filter grayscale hover:grayscale-0 transition-all duration-300" alt="Express" />
-        </div>
-        <!-- MongoDB -->
-        <div
-          class="p-4 bg-gray-800/50 rounded-xl hover:bg-gray-700/50 transition-all duration-300 border border-gray-700 hover:border-blue-400">
-          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg"
-            class="w-12 h-12 mx-auto filter grayscale hover:grayscale-0 transition-all duration-300" alt="MongoDB" />
-        </div>
-        <!-- Python -->
-        <div
-          class="p-4 bg-gray-800/50 rounded-xl hover:bg-gray-700/50 transition-all duration-300 border border-gray-700 hover:border-blue-400">
-          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg"
-            class="w-12 h-12 mx-auto filter grayscale hover:grayscale-0 transition-all duration-300" alt="Python" />
-        </div>
-        <!-- C++ -->
-        <div
-          class="p-4 bg-gray-800/50 rounded-xl hover:bg-gray-700/50 transition-all duration-300 border border-gray-700 hover:border-blue-400">
-          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cplusplus/cplusplus-original.svg"
-            class="w-12 h-12 mx-auto filter grayscale hover:grayscale-0 transition-all duration-300" alt="C++" />
-        </div>
-        <!-- MySQL -->
-        <div
-          class="p-4 bg-gray-800/50 rounded-xl hover:bg-gray-700/50 transition-all duration-300 border border-gray-700 hover:border-blue-400">
-          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg"
-            class="w-12 h-12 mx-auto filter grayscale hover:grayscale-0 transition-all duration-300" alt="MySQL" />
-        </div>
-        <!-- TypeScript -->
-        <div
-          class="p-4 bg-gray-800/50 rounded-xl hover:bg-gray-700/50 transition-all duration-300 border border-gray-700 hover:border-blue-400">
-          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg"
-            class="w-12 h-12 mx-auto filter grayscale hover:grayscale-0 transition-all duration-300" alt="TypeScript" />
-        </div>
-        <!-- Tailwind CSS -->
-        <div
-          class="p-4 bg-gray-800/50 rounded-xl hover:bg-gray-700/50 transition-all duration-300 border border-gray-700 hover:border-blue-400">
-          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/tailwindcss/tailwindcss-original.svg"
-            class="w-12 h-12 mx-auto filter grayscale hover:grayscale-0 transition-all duration-300"
-            alt="Tailwind CSS" />
-        </div>
-        <!-- Git -->
-        <div
-          class="p-4 bg-gray-800/50 rounded-xl hover:bg-gray-700/50 transition-all duration-300 border border-gray-700 hover:border-blue-400">
-          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg"
-            class="w-12 h-12 mx-auto filter grayscale hover:grayscale-0 transition-all duration-300" alt="Git" />
-        </div>
-        <!-- GitHub -->
-        <div
-          class="p-4 bg-gray-800/50 rounded-xl hover:bg-gray-700/50 transition-all duration-300 border border-gray-700 hover:border-blue-400">
-          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg"
-            class="w-12 h-12 mx-auto filter grayscale hover:grayscale-0 transition-all duration-300" alt="GitHub" />
+        <div class="space-y-6">
+          <p class="text-gray-400 text-lg leading-relaxed">Passionate full-stack developer with over a year of
+            experience building dynamic and user-friendly web applications. Specialized in creating responsive, modern
+            websites with a strong foundation in both front-end and back-end technologies.</p>
+          <div class="space-y-4">
+            <div class="flex items-center gap-4">
+              <i class="ri-code-line text-[#8A6FE8] text-2xl"></i>
+              <div>
+                <h3 class="text-white font-semibold">Clean Code Advocate</h3>
+                <p class="text-gray-400">Writing maintainable and scalable code</p>
+              </div>
+            </div>
+            <div class="flex items-center gap-4">
+              <i class="ri-layout-line text-[#8A6FE8] text-2xl"></i>
+              <div>
+                <h3 class="text-white font-semibold">UI/UX Enthusiast</h3>
+                <p class="text-gray-400">Creating intuitive user experiences</p>
+              </div>
+            </div>
+            <div class="flex items-center gap-4">
+              <i class="ri-team-line text-[#8A6FE8] text-2xl"></i>
+              <div>
+                <h3 class="text-white font-semibold">Team Player</h3>
+                <p class="text-gray-400">Collaborating effectively in agile environments</p>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </section>
-
-  <!-- Projects Section -->
-  <section id="projects" class="py-16 bg-gray-900/50">
-    <div class="container mx-auto px-6">
-      <h2
-        class="text-4xl font-bold mb-12 text-center bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">
-        Projects</h2>
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+  <section id="skills" class="py-20 relative z-10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center">
+      <h2 class="text-4xl font-bold text-center mb-16 gradient-text tracking-widest uppercase">Tech Stack</h2>
+      <div class="grid md:grid-cols-3 gap-12 w-full">
         <div
-          class="bg-gray-800/50 p-6 rounded-xl border border-gray-700 hover:border-blue-400 transition-all duration-300 hover:-translate-y-2 shadow-xl">
-          <img src={{ url_for('static', filename='Project1.png' ) }} alt="Project One"
-            class="w-full h-48 object-cover rounded-lg mb-4" />
-          <h3 class="text-2xl font-bold mb-4 text-blue-400">ThinkEd</h3>
-          <p class="text-gray-300 mb-4">
-            Modern E-learning platform for students to take classes, tests, and quizzes. Built with HTML, CSS,
-            JavaScript, Nodejs and Express.
-          </p>
-          <a class="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition-all duration-300"
-            href="https://github.com/Arjun-Walia/Cyber-Cypher">
-            View Project
-          </a>
+          class="border border-[#4A3B8C] bg-[#1B1535] rounded-lg p-8 hover:border-[#8A6FE8] transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-[#8A6FE8]/20">
+          <h3 class="font-semibold text-xl mb-6 text-[#8A6FE8] flex items-center gap-2">
+            <i class="ri-code-line"></i>
+            Frontend Development
+          </h3>
+          <div class="grid grid-cols-3 gap-6">
+            <div class="flex flex-col items-center gap-2">
+              <i class="ri-html5-line text-[#8A6FE8] text-3xl hover:scale-125 transition-transform"></i>
+              <span class="text-sm text-gray-400">HTML5</span>
+            </div>
+            <div class="flex flex-col items-center gap-2">
+              <i class="ri-css3-line text-[#8A6FE8] text-3xl hover:scale-125 transition-transform"></i>
+              <span class="text-sm text-gray-400">CSS3</span>
+            </div>
+            <div class="flex flex-col items-center gap-2">
+              <i class="ri-javascript-line text-[#8A6FE8] text-3xl hover:scale-125 transition-transform"></i>
+              <span class="text-sm text-gray-400">JavaScript</span>
+            </div>
+            <div class="flex flex-col items-center gap-2">
+              <i class="ri-reactjs-line text-[#8A6FE8] text-3xl hover:scale-125 transition-transform"></i>
+              <span class="text-sm text-gray-400">React</span>
+            </div>
+            <div class="flex flex-col items-center gap-2">
+              <i class="ri-tailwind-css-line text-[#8A6FE8] text-3xl hover:scale-125 transition-transform"></i>
+              <span class="text-sm text-gray-400">Tailwind</span>
+            </div>
+            <div class="flex flex-col items-center gap-2">
+              <i class="ri-typescript-line text-[#8A6FE8] text-3xl hover:scale-125 transition-transform"></i>
+              <span class="text-sm text-gray-400">TypeScript</span>
+            </div>
+          </div>
         </div>
         <div
-          class="bg-gray-800/50 p-6 rounded-xl border border-gray-700 hover:border-blue-400 transition-all duration-300 hover:-translate-y-2 shadow-xl">
-          <img src={{ url_for('static', filename='Project2.png' ) }} alt="Project One"
-            class="w-full h-48 object-cover rounded-lg mb-4" />
-          <h3 class="text-2xl font-bold mb-4 text-blue-400">ExchangeX</h3>
-          <p class="text-gray-300 mb-4">
-            Modern trading platform for users to Exchange their items for someone else's item. Built with React, Nodejs,
-            Express, and MongoDB.
-          </p>
-          <a class="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition-all duration-300"
-            hreff="https://github.com/Arjun-Walia/Virtual-Barter-Market">
-            View Project
-          </a>
+          class="border border-[#4A3B8C] bg-[#1B1535] rounded-lg p-8 hover:border-[#8A6FE8] transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-[#8A6FE8]/20">
+          <h3 class="font-semibold text-xl mb-6 text-[#8A6FE8] flex items-center gap-2">
+            <i class="ri-server-line"></i>
+            Backend Development
+          </h3>
+          <div class="grid grid-cols-2 gap-6">
+            <div class="flex flex-col items-center gap-2">
+              <i class="ri-nodejs-line text-[#8A6FE8] text-3xl hover:scale-125 transition-transform"></i>
+              <span class="text-sm text-gray-400">Node.js</span>
+            </div>
+            <div class="flex flex-col items-center gap-2">
+              <i class="ri-server-line text-[#8A6FE8] text-3xl hover:scale-125 transition-transform"></i>
+              <span class="text-sm text-gray-400">Express</span>
+            </div>
+            <div class="flex flex-col items-center gap-2">
+              <i class="ri-python-line text-[#8A6FE8] text-3xl hover:scale-125 transition-transform"></i>
+              <span class="text-sm text-gray-400">Python</span>
+            </div>
+            <div class="flex flex-col items-center gap-2">
+              <i class="ri-code-box-line text-[#8A6FE8] text-3xl hover:scale-125 transition-transform"></i>
+              <span class="text-sm text-gray-400">REST API</span>
+            </div>
+          </div>
         </div>
         <div
-          class="bg-gray-800/50 p-6 rounded-xl border border-gray-700 hover:border-blue-400 transition-all duration-300 hover:-translate-y-2 shadow-xl">
-          <img src={{ url_for('static', filename='Project3.png' ) }} alt="Project One"
-            class="w-full h-48 object-cover rounded-lg mb-4" />
-          <h3 class="text-2xl font-bold mb-4 text-blue-400">HealthCare Chatbot</h3>
-          <p class="text-gray-300 mb-4">
-            A chatbot that helps users to give cure or advice about their health. built with Html, CSS, JavaScript, Node
-            and Express.
-          </p>
-          <a class="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition-all duration-300"
-            href="https://github.com/Arjun-Walia/Healthcare-chatbot">
-            View Project
-          </a>
+          class="border border-[#4A3B8C] bg-[#1B1535] rounded-lg p-8 hover:border-[#8A6FE8] transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-[#8A6FE8]/20">
+          <h3 class="font-semibold text-xl mb-6 text-[#8A6FE8] flex items-center gap-2">
+            <i class="ri-tools-line"></i>
+            Databases & Tools
+          </h3>
+          <div class="grid grid-cols-2 gap-6">
+            <div class="flex flex-col items-center gap-2">
+              <i class="ri-database-2-line text-[#8A6FE8] text-3xl hover:scale-125 transition-transform"></i>
+              <span class="text-sm text-gray-400">MongoDB</span>
+            </div>
+            <div class="flex flex-col items-center gap-2">
+              <i class="ri-database-line text-[#8A6FE8] text-3xl hover:scale-125 transition-transform"></i>
+              <span class="text-sm text-gray-400">MySQL</span>
+            </div>
+            <div class="flex flex-col items-center gap-2">
+              <i class="ri-git-branch-line text-[#8A6FE8] text-3xl hover:scale-125 transition-transform"></i>
+              <span class="text-sm text-gray-400">Git</span>
+            </div>
+            <div class="flex flex-col items-center gap-2">
+              <i class="ri-github-line text-[#8A6FE8] text-3xl hover:scale-125 transition-transform"></i>
+              <span class="text-sm text-gray-400">GitHub</span>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </section>
-
-  <!-- Contact Section -->
-  <section id="contact" class="py-16 bg-gray-900/50">
-    <div class="container mx-auto px-6">
-      <h2
-        class="text-4xl font-bold mb-12 text-center bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">
-        Contact Me</h2>
-      <form class="max-w-lg mx-auto bg-gray-800/50 p-8 rounded-xl shadow-xl border border-gray-700" action="/contactus"
-        method="POST">
-        <div class="mb-6">
-          <input type="text" id="name" name="name" placeholder="Name"
-            class="w-full px-4 py-3 bg-gray-900/50 border border-gray-700 rounded-lg text-gray-100 focus:outline-none focus:border-blue-400 transition-all duration-300" />
+  <section id="projects" class="py-20 relative z-10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center">
+      <h2 class="text-4xl font-bold text-center mb-16 gradient-text tracking-widest uppercase">Featured Projects</h2>
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-12 w-full">
+        <div
+          class="bg-[#1B2735] rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 hover:-translate-y-2 glow">
+          <img src="{{ url_for('static', filename='Project1.png') }}"
+            class="w-full h-48 object-cover" />
+          <div class="p-6">
+            <h3 class="text-xl font-semibold mb-2 tracking-wide">ThinkEd</h3>
+            <p class="text-gray-400 mb-4">Modern e-learning platform with seamless online learning experience.</p>
+            <div class="flex flex-wrap gap-2 mb-4">
+              <span class="px-3 py-1 bg-gray-700 rounded-full text-sm tracking-wider">React</span>
+              <span class="px-3 py-1 bg-gray-700 rounded-full text-sm tracking-wider">Node.js</span>
+              <span class="px-3 py-1 bg-gray-700 rounded-full text-sm tracking-wider">MongoDB</span>
+            </div>
+            <a href="#" class="text-primary hover:underline cursor-pointer">View Project →</a>
+          </div>
         </div>
-        <div class="mb-6">
-          <input type="email" id="email" name="email" placeholder="Email"
-            class="w-full px-4 py-3 bg-gray-900/50 border border-gray-700 rounded-lg text-gray-100 focus:outline-none focus:border-blue-400 transition-all duration-300" />
+        <div
+          class="bg-[#1B2735] rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 hover:-translate-y-2 glow">
+          <img src="{{ url_for('static', filename='Project2.png') }}"
+            class="w-full h-48 object-cover" />
+          <div class="p-6">
+            <h3 class="text-xl font-semibold mb-2">ExchangeX</h3>
+            <p class="text-gray-400 mb-4">Virtual barter marketplace for item exchange and trading.</p>
+            <div class="flex flex-wrap gap-2 mb-4">
+              <span class="px-3 py-1 bg-gray-700 rounded-full text-sm tracking-wider">React</span>
+              <span class="px-3 py-1 bg-gray-700 rounded-full text-sm tracking-wider">Express.js</span>
+              <span class="px-3 py-1 bg-gray-700 rounded-full text-sm tracking-wider">MongoDB</span>
+            </div>
+            <a href="#" class="text-primary hover:underline cursor-pointer">View Project →</a>
+          </div>
         </div>
-        <div class="mb-8">
-          <textarea id="message" name="message" rows="4" placeholder="Message"
-            class="w-full px-4 py-3 bg-gray-900/50 border border-gray-700 rounded-lg text-gray-100 focus:outline-none focus:border-blue-400 transition-all duration-300"></textarea>
+        <div
+          class="bg-[#1B2735] rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 hover:-translate-y-2 glow">
+          <img src="{{ url_for('static', filename='Project3.png') }}"
+            class="w-full h-48 object-cover" />
+          <div class="p-6">
+            <h3 class="text-xl font-semibold mb-2">HealthCare Chatbot</h3>
+            <p class="text-gray-400 mb-4">AI-powered healthcare assistant for basic medical guidance.</p>
+            <div class="flex flex-wrap gap-2 mb-4">
+              <span class="px-3 py-1 bg-gray-700 rounded-full text-sm tracking-wider">JavaScript</span>
+              <span class="px-3 py-1 bg-gray-700 rounded-full text-sm tracking-wider">Node.js</span>
+              <span class="px-3 py-1 bg-gray-700 rounded-full text-sm tracking-wider">Express.js</span>
+            </div>
+            <a href="#" class="text-primary hover:underline cursor-pointer">View Project →</a>
+          </div>
         </div>
-        <button type="submit"
-          class="w-full bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-all duration-300 transform hover:scale-105">
-          Send Message
-        </button>
-      </form>
+      </div>
+    </div>
     </div>
   </section>
-
-  <!-- Footer -->
-  <footer class="bg-gray-900/80 py-6">
-    <div class="container mx-auto px-6 text-center">
-      <p class="text-gray-400">© 2025 Arjun Walia. All rights reserved.</p>
-      <div class="flex justify-center space-x-4 mt-4">
-        <a href="https://github.com/Arjun-Walia" class="text-gray-400 hover:text-blue-400 transition-all duration-300">
-          <i class="fab fa-github"></i>
-        </a>
-        <a href="https://linkedin.com/in/arjun-walia"
-          class="text-gray-400 hover:text-blue-400 transition-all duration-300">
-          <i class="fab fa-linkedin"></i>
-        </a>
-        <a href="mailto:arjun.walia@example.com" class="text-gray-400 hover:text-blue-400 transition-all duration-300">
-          <i class="fas fa-envelope"></i>
-        </a>
+  <section id="contact" class="py-20 relative z-10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center">
+      <h2 class="text-4xl font-bold text-center mb-16 gradient-text tracking-widest uppercase">Get In Touch</h2>
+      <div class="max-w-xl mx-auto">
+        <form class="space-y-6">
+          <div>
+            <label class="block text-sm font-medium text-gray-300 mb-2">Name</label>
+            <input type="text"
+              class="w-[500px] px-4 py-2 border border-gray-600 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-all bg-gray-700 text-white placeholder-gray-400"
+              placeholder="Your name" />
+          </div>
+          <div>
+            <label class="block text-sm font-medium text-gray-300 mb-2">Email</label>
+            <input type="email"
+              class="w-[500px] px-4 py-2 border border-gray-600 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-all bg-gray-700 text-white placeholder-gray-400"
+              placeholder="your@email.com" />
+          </div>
+          <div>
+            <label class="block text-sm font-medium text-gray-300 mb-2">Message</label>
+            <textarea
+              class="w-[500px] px-4 py-2 border border-gray-600 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-all h-32 bg-gray-700 text-white placeholder-gray-400"
+              placeholder="Your message"></textarea>
+          </div>
+          <button type="submit"
+            class="w-[500px] bg-primary text-white px-6 py-3 rounded-button hover:opacity-90 transition-opacity cursor-pointer">Send
+            Message</button>
+        </form>
+      </div>
+    </div>
+    </div>
+  </section>
+  <footer class="relative text-white py-12 z-10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center">
+      <div class="grid md:grid-cols-3 gap-12 w-full">
+        <div>
+          <h3 class="font-['Pacifico'] text-2xl mb-4">Arjun Walia</h3>
+          <p class="text-gray-400">Building the future of web development, one project at a time.</p>
+        </div>
+        <div>
+          <h3 class="text-lg font-semibold mb-4">Quick Links</h3>
+          <div class="space-y-2">
+            <a href="#home" class="block text-gray-400 hover:text-white transition-colors cursor-pointer">Home</a>
+            <a href="#about" class="block text-gray-400 hover:text-white transition-colors cursor-pointer">About</a>
+            <a href="#skills" class="block text-gray-400 hover:text-white transition-colors cursor-pointer">Skills</a>
+            <a href="#projects"
+              class="block text-gray-400 hover:text-white transition-colors cursor-pointer">Projects</a>
+            <a href="#contact" class="block text-gray-400 hover:text-white transition-colors cursor-pointer">Contact</a>
+          </div>
+        </div>
+        <div>
+          <h3 class="text-lg font-semibold mb-4">Connect</h3>
+          <div class="flex space-x-4">
+            <a href="#"
+              class="text-gray-400 hover:text-white transition-all duration-300 hover:scale-125 cursor-pointer">
+              <i class="ri-github-line ri-xl"></i>
+            </a>
+            <a href="#" class="text-gray-400 hover:text-white transition-colors cursor-pointer">
+              <i class="ri-linkedin-line ri-xl"></i>
+            </a>
+            <a href="#" class="text-gray-400 hover:text-white transition-colors cursor-pointer">
+              <i class="ri-twitter-line ri-xl"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="mt-8 pt-8 border-t border-[#2A1F5E] text-center text-[#808080]">
+        <p>© 2025 All rights reserved.</p>
       </div>
     </div>
   </footer>
-
   <script>
-    function toggleMenu() {
-      const mobileMenu = document.getElementById('mobileMenu');
-      mobileMenu.classList.toggle('hidden');
+    function createShootingStar() {
+      const star = document.createElement("div");
+      star.className = "star";
+      star.style.top = Math.random() * (window.innerHeight / 2) + "px";
+      star.style.left = Math.random() * (window.innerWidth / 2) + "px";
+      const size = 1 + Math.random() * 2;
+      star.style.width = size + "px";
+      star.style.height = size + "px";
+      const duration = 1 + Math.random() * 2;
+      star.style.animation = `shootingStars ${duration}s linear`;
+      document.getElementById("shooting-stars").appendChild(star);
+      star.addEventListener("animationend", () => {
+        star.remove();
+      });
     }
+    for (let i = 0; i < 5; i++) {
+      setTimeout(() => createShootingStar(), i * 200);
+    }
+    setInterval(createShootingStar, 800);
+    document.addEventListener("DOMContentLoaded", () => {
+      const sections = document.querySelectorAll("section");
+      const navLinks = document.querySelectorAll("nav a");
+      const observerOptions = {
+        threshold: 0.3,
+        rootMargin: "-50px 0px",
+      };
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const id = entry.target.getAttribute("id");
+            history.replaceState(null, null, `#${id}`);
+            navLinks.forEach((link) => {
+              link.classList.remove("text-primary");
+              if (link.getAttribute("href") === `#${id}`) {
+                link.classList.add("text-primary");
+              }
+            });
+            entry.target.style.opacity = "1";
+            entry.target.style.transform = "translateY(0)";
+          }
+        });
+      }, observerOptions);
+      sections.forEach((section, index) => {
+        section.style.opacity = "0";
+        section.style.transform = "translateY(20px)";
+        section.style.transition = "all 0.6s ease-out";
+        section.style.transitionDelay = `${index * 0.2}s`;
+        observer.observe(section);
+      });
+      const elements = document.querySelectorAll(
+        ".animate-slide-left, .animate-slide-right, .animate-fade-in",
+      );
+      elements.forEach((element, index) => {
+        element.style.opacity = "0";
+        setTimeout(() => {
+          element.style.opacity = "1";
+        }, index * 200);
+      });
+      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener("click", function (e) {
+          e.preventDefault();
+          const targetId = this.getAttribute("href");
+          const targetSection = document.querySelector(targetId);
+          window.scrollTo({
+            top: targetSection.offsetTop - 64,
+            behavior: "smooth",
+          });
+        });
+      });
+      const form = document.querySelector("form");
+      form.addEventListener("submit", (e) => {
+        e.preventDefault();
+        const formData = new FormData(form);
+        const data = Object.fromEntries(formData);
+        console.log("Form submitted:", data);
+        form.reset();
+      });
+      const hash = window.location.hash;
+      if (hash) {
+        const targetSection = document.querySelector(hash);
+        if (targetSection) {
+          setTimeout(() => {
+            window.scrollTo({
+              top: targetSection.offsetTop - 64,
+              behavior: "smooth",
+            });
+          }, 100);
+        }
+      }
+    });
+    document.addEventListener("scroll", () => {
+      const scrolled = window.pageYOffset;
+      const parallaxElements = document.querySelectorAll(".parallax-back");
+      parallaxElements.forEach((element) => {
+        const speed = 0.5;
+        element.style.transform = `translateY(${scrolled * speed}px) translateZ(-1px) scale(2)`;
+      });
+    });
   </script>
 </body>
 
