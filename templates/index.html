@@ -208,6 +208,7 @@
 
     .gradient-text {
       background: linear-gradient(90deg, #00f2ff, #bf00ff);
+      background-clip: text;
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
@@ -265,68 +266,139 @@
       </div>
     </div>
   </nav>
-  <section id="home" class="pt-16 min-h-screen flex items-center relative overflow-hidden parallax-container">
-    <div class="parallax-base">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center w-full max-w-6xl mx-auto">
-          <!-- Text Content -->
-          <div class="text-left order-1 md:order-1">
-            <h1 class="text-6xl font-bold mb-6 gradient-text tracking-wider">Full Stack Developer</h1>
-            <p class="text-xl text-gray-400 mb-8 tracking-wide">
-              Crafting innovative digital solutions with modern technologies. Specialized in creating responsive, user-friendly web applications with both frontend and backend expertise.
-            </p>
-            <div class="flex gap-4">
-              <button class="bg-[#8A6FE8] text-white px-8 py-3 rounded-button hover:opacity-90 transition-all duration-300 hover:scale-110 hover:shadow-lg hover:shadow-[#8A6FE8]/30 cursor-pointer animate-pulse">
-                View Projects
-              </button>
-              <button class="border-2 border-[#8A6FE8] text-[#8A6FE8] px-8 py-3 rounded-button hover:bg-[#8A6FE8] hover:text-white transition-all duration-300 hover:scale-110 hover:shadow-lg hover:shadow-[#8A6FE8]/30 cursor-pointer">
-                Contact Me
-              </button>
+  <section id="home" class="pt-16 min-h-screen flex items-center relative overflow-hidden">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center w-full">
+        <!-- Text Content -->
+        <div class="text-center lg:text-left order-2 lg:order-1">
+          <div class="mb-6">
+            <span class="inline-block px-4 py-2 bg-gradient-to-r from-[#8A6FE8]/20 to-[#00f2ff]/20 border border-[#8A6FE8]/30 rounded-full text-[#8A6FE8] text-sm font-medium mb-6">
+              👋 Welcome to my digital world
+            </span>
+          </div>
+          <h1 class="text-5xl lg:text-6xl font-bold mb-6 gradient-text tracking-wider leading-tight">
+            Full Stack
+            <br>
+            <span class="text-white">Developer</span>
+          </h1>
+          <p class="text-xl text-gray-400 mb-8 leading-relaxed max-w-2xl">
+            Crafting innovative digital solutions with modern technologies. Specialized in creating responsive, user-friendly web applications with expertise in AI integration, data science, and full-stack development.
+          </p>
+          <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+            <a href="#projects" class="bg-gradient-to-r from-[#8A6FE8] to-[#00f2ff] text-white px-8 py-4 rounded-xl font-semibold hover:from-[#7A5FD8] hover:to-[#00d9e6] transition-all duration-300 transform hover:scale-105 hover:shadow-lg hover:shadow-[#8A6FE8]/30 flex items-center justify-center gap-3">
+              <i class="ri-rocket-line"></i>
+              View My Work
+            </a>
+            <a href="#contact" class="border-2 border-[#8A6FE8]/50 text-[#8A6FE8] px-8 py-4 rounded-xl font-semibold hover:bg-[#8A6FE8]/10 hover:border-[#8A6FE8] transition-all duration-300 transform hover:scale-105 flex items-center justify-center gap-3">
+              <i class="ri-message-3-line"></i>
+              Let's Connect
+            </a>
+          </div>
+          
+          <!-- Stats Section -->
+          <div class="grid grid-cols-3 gap-6 mt-12 pt-8 border-t border-[#8A6FE8]/20">
+            <div class="text-center">
+              <div class="text-2xl font-bold gradient-text">15+</div>
+              <div class="text-sm text-gray-400">Technologies</div>
+            </div>
+            <div class="text-center">
+              <div class="text-2xl font-bold gradient-text">50+</div>
+              <div class="text-sm text-gray-400">Projects</div>
+            </div>
+            <div class="text-center">
+              <div class="text-2xl font-bold gradient-text">100%</div>
+              <div class="text-sm text-gray-400">Dedication</div>
             </div>
           </div>
-  
-          <!-- Profile Image -->
-          <div class="flex justify-center md:justify-end order-2 md:order-2">
-            <img src="{{ url_for('static', filename='profile.jpg') }}" alt="Developer"
-              class="w-64 h-64 object-cover rounded-lg shadow-lg" />
+        </div>
+
+        <!-- Profile Image -->
+        <div class="flex justify-center lg:justify-end order-1 lg:order-2">
+          <div class="relative">
+            <div class="absolute inset-0 bg-gradient-to-r from-[#8A6FE8] to-[#00f2ff] rounded-2xl blur-lg opacity-30 animate-pulse"></div>
+            <img src="{{ url_for('static', filename='profile.jpg') }}" alt="Arjun Walia - Full Stack Developer"
+              class="relative w-80 h-80 object-cover rounded-2xl shadow-2xl border-2 border-[#8A6FE8]/30 hover:scale-105 transition-transform duration-300" />
+            <div class="absolute -bottom-4 -right-4 bg-gradient-to-r from-[#8A6FE8] to-[#00f2ff] p-4 rounded-xl shadow-lg">
+              <i class="ri-code-s-slash-line text-white text-2xl"></i>
+            </div>
           </div>
         </div>
       </div>
     </div>
   </section>
   <section id="about" class="py-20 relative z-10">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center">
-      <h2 class="text-4xl font-bold text-center mb-16 gradient-text tracking-widest uppercase">About Me</h2>
-      <div class="grid md:grid-cols-2 gap-16 items-center w-full">
-        <div>
-          <img src="https://public.readdy.ai/ai/img_res/aac2fc90111a029bd4bdbadfa0c6bd51.jpg"
-            class="rounded-lg shadow-lg glow" />
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-4xl font-bold gradient-text tracking-widest uppercase mb-4">About Me</h2>
+        <p class="text-gray-400 max-w-3xl mx-auto">Passionate about creating digital experiences that make a difference</p>
+      </div>
+      
+      <div class="grid lg:grid-cols-2 gap-16 items-center w-full">
+        <div class="order-2 lg:order-1">
+          <div class="relative">
+            <div class="absolute inset-0 bg-gradient-to-r from-[#8A6FE8] to-[#00f2ff] rounded-2xl blur-lg opacity-20"></div>
+            <img src="https://public.readdy.ai/ai/img_res/aac2fc90111a029bd4bdbadfa0c6bd51.jpg"
+              class="relative rounded-2xl shadow-2xl glow border border-[#8A6FE8]/30" />
+          </div>
         </div>
-        <div class="space-y-6">
-          <p class="text-gray-400 text-lg leading-relaxed">Passionate full-stack developer with over a year of
-            experience building dynamic and user-friendly web applications. Specialized in creating responsive, modern
-            websites with a strong foundation in both front-end and back-end technologies.</p>
-          <div class="space-y-4">
-            <div class="flex items-center gap-4">
-              <i class="ri-code-line text-[#8A6FE8] text-2xl"></i>
-              <div>
-                <h3 class="text-white font-semibold">Clean Code Advocate</h3>
-                <p class="text-gray-400">Writing maintainable and scalable code</p>
+        
+        <div class="space-y-8 order-1 lg:order-2">
+          <div class="space-y-6">
+            <p class="text-gray-300 text-lg leading-relaxed">
+              Passionate full-stack developer with extensive experience building dynamic and user-friendly web applications. I specialize in creating responsive, modern websites with a strong foundation in both front-end and back-end technologies.
+            </p>
+            <p class="text-gray-400 leading-relaxed">
+              My journey in technology spans from traditional web development to cutting-edge AI integration, data visualization, and machine learning applications. I believe in writing clean, maintainable code and creating intuitive user experiences.
+            </p>
+          </div>
+          
+          <div class="grid md:grid-cols-2 gap-6">
+            <div class="bg-[#1B2735]/40 backdrop-blur-sm rounded-xl p-6 border border-[#8A6FE8]/20 hover:border-[#8A6FE8]/40 transition-all duration-300">
+              <div class="flex items-center gap-4 mb-3">
+                <div class="bg-gradient-to-r from-[#8A6FE8] to-[#00f2ff] p-3 rounded-lg">
+                  <i class="ri-code-line text-white text-xl"></i>
+                </div>
+                <div>
+                  <h3 class="text-white font-semibold">Clean Code Advocate</h3>
+                </div>
               </div>
+              <p class="text-gray-400 text-sm">Writing maintainable, scalable, and well-documented code following industry best practices.</p>
             </div>
-            <div class="flex items-center gap-4">
-              <i class="ri-layout-line text-[#8A6FE8] text-2xl"></i>
-              <div>
-                <h3 class="text-white font-semibold">UI/UX Enthusiast</h3>
-                <p class="text-gray-400">Creating intuitive user experiences</p>
+            
+            <div class="bg-[#1B2735]/40 backdrop-blur-sm rounded-xl p-6 border border-[#8A6FE8]/20 hover:border-[#8A6FE8]/40 transition-all duration-300">
+              <div class="flex items-center gap-4 mb-3">
+                <div class="bg-gradient-to-r from-[#8A6FE8] to-[#00f2ff] p-3 rounded-lg">
+                  <i class="ri-layout-line text-white text-xl"></i>
+                </div>
+                <div>
+                  <h3 class="text-white font-semibold">UI/UX Enthusiast</h3>
+                </div>
               </div>
+              <p class="text-gray-400 text-sm">Creating intuitive, accessible user experiences with modern design principles and user-centered approaches.</p>
             </div>
-            <div class="flex items-center gap-4">
-              <i class="ri-team-line text-[#8A6FE8] text-2xl"></i>
-              <div>
-                <h3 class="text-white font-semibold">Team Player</h3>
-                <p class="text-gray-400">Collaborating effectively in agile environments</p>
+            
+            <div class="bg-[#1B2735]/40 backdrop-blur-sm rounded-xl p-6 border border-[#8A6FE8]/20 hover:border-[#8A6FE8]/40 transition-all duration-300">
+              <div class="flex items-center gap-4 mb-3">
+                <div class="bg-gradient-to-r from-[#8A6FE8] to-[#00f2ff] p-3 rounded-lg">
+                  <i class="ri-team-line text-white text-xl"></i>
+                </div>
+                <div>
+                  <h3 class="text-white font-semibold">Team Collaborator</h3>
+                </div>
               </div>
+              <p class="text-gray-400 text-sm">Thriving in agile environments, contributing to team success through effective communication and knowledge sharing.</p>
+            </div>
+            
+            <div class="bg-[#1B2735]/40 backdrop-blur-sm rounded-xl p-6 border border-[#8A6FE8]/20 hover:border-[#8A6FE8]/40 transition-all duration-300">
+              <div class="flex items-center gap-4 mb-3">
+                <div class="bg-gradient-to-r from-[#8A6FE8] to-[#00f2ff] p-3 rounded-lg">
+                  <i class="ri-robot-line text-white text-xl"></i>
+                </div>
+                <div>
+                  <h3 class="text-white font-semibold">AI Integration</h3>
+                </div>
+              </div>
+              <p class="text-gray-400 text-sm">Leveraging artificial intelligence and machine learning to build intelligent, data-driven applications.</p>
             </div>
           </div>
         </div>
@@ -334,89 +406,133 @@
     </div>
   </section>
   <section id="skills" class="py-20 relative z-10">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center">
-      <h2 class="text-4xl font-bold text-center mb-16 gradient-text tracking-widest uppercase">Tech Stack</h2>
-      <div class="grid md:grid-cols-3 gap-12 w-full">
-        <div
-          class="border border-[#4A3B8C] bg-[#1B1535] rounded-lg p-8 hover:border-[#8A6FE8] transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-[#8A6FE8]/20">
-          <h3 class="font-semibold text-xl mb-6 text-[#8A6FE8] flex items-center gap-2">
-            <i class="ri-code-line"></i>
-            Frontend Development
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-4xl font-bold gradient-text tracking-widest uppercase mb-4">Tech Stack</h2>
+        <p class="text-gray-400 max-w-3xl mx-auto">Leveraging cutting-edge technologies to build scalable, efficient, and innovative solutions</p>
+      </div>
+      
+      <div class="grid lg:grid-cols-4 md:grid-cols-2 gap-8 w-full">
+        <!-- Programming Languages -->
+        <div class="bg-[#1B2735]/40 backdrop-blur-sm rounded-2xl p-8 border border-[#8A6FE8]/20 hover:border-[#8A6FE8]/40 transition-all duration-300 hover:scale-105 hover:shadow-xl hover:shadow-[#8A6FE8]/20 glow">
+          <h3 class="font-bold text-xl mb-6 text-[#8A6FE8] flex items-center gap-3">
+            <i class="ri-code-s-slash-line text-2xl"></i>
+            Languages
           </h3>
-          <div class="grid grid-cols-3 gap-6">
-            <div class="flex flex-col items-center gap-2">
-              <i class="ri-html5-line text-[#8A6FE8] text-3xl hover:scale-125 transition-transform"></i>
-              <span class="text-sm text-gray-400">HTML5</span>
+          <div class="grid grid-cols-2 gap-4">
+            <div class="flex flex-col items-center gap-2 p-3 rounded-xl bg-gray-800/30 hover:bg-gray-700/40 transition-all">
+              <i class="ri-javascript-line text-[#F7DF1E] text-3xl hover:scale-125 transition-transform"></i>
+              <span class="text-sm text-gray-300">JavaScript</span>
             </div>
-            <div class="flex flex-col items-center gap-2">
-              <i class="ri-css3-line text-[#8A6FE8] text-3xl hover:scale-125 transition-transform"></i>
-              <span class="text-sm text-gray-400">CSS3</span>
+            <div class="flex flex-col items-center gap-2 p-3 rounded-xl bg-gray-800/30 hover:bg-gray-700/40 transition-all">
+              <i class="ri-python-line text-[#3776AB] text-3xl hover:scale-125 transition-transform"></i>
+              <span class="text-sm text-gray-300">Python</span>
             </div>
-            <div class="flex flex-col items-center gap-2">
-              <i class="ri-javascript-line text-[#8A6FE8] text-3xl hover:scale-125 transition-transform"></i>
-              <span class="text-sm text-gray-400">JavaScript</span>
+            <div class="flex flex-col items-center gap-2 p-3 rounded-xl bg-gray-800/30 hover:bg-gray-700/40 transition-all">
+              <i class="ri-typescript-line text-[#3178C6] text-3xl hover:scale-125 transition-transform"></i>
+              <span class="text-sm text-gray-300">TypeScript</span>
             </div>
-            <div class="flex flex-col items-center gap-2">
-              <i class="ri-reactjs-line text-[#8A6FE8] text-3xl hover:scale-125 transition-transform"></i>
-              <span class="text-sm text-gray-400">React</span>
+            <div class="flex flex-col items-center gap-2 p-3 rounded-xl bg-gray-800/30 hover:bg-gray-700/40 transition-all">
+              <i class="ri-code-line text-[#00ADD8] text-3xl hover:scale-125 transition-transform"></i>
+              <span class="text-sm text-gray-300">Go</span>
             </div>
-            <div class="flex flex-col items-center gap-2">
-              <i class="ri-tailwind-css-line text-[#8A6FE8] text-3xl hover:scale-125 transition-transform"></i>
-              <span class="text-sm text-gray-400">Tailwind</span>
+            <div class="flex flex-col items-center gap-2 p-3 rounded-xl bg-gray-800/30 hover:bg-gray-700/40 transition-all">
+              <i class="ri-code-box-line text-[#00599C] text-3xl hover:scale-125 transition-transform"></i>
+              <span class="text-sm text-gray-300">C</span>
             </div>
-            <div class="flex flex-col items-center gap-2">
-              <i class="ri-typescript-line text-[#8A6FE8] text-3xl hover:scale-125 transition-transform"></i>
-              <span class="text-sm text-gray-400">TypeScript</span>
+            <div class="flex flex-col items-center gap-2 p-3 rounded-xl bg-gray-800/30 hover:bg-gray-700/40 transition-all">
+              <i class="ri-code-box-line text-[#00599C] text-3xl hover:scale-125 transition-transform"></i>
+              <span class="text-sm text-gray-300">C++</span>
             </div>
           </div>
         </div>
-        <div
-          class="border border-[#4A3B8C] bg-[#1B1535] rounded-lg p-8 hover:border-[#8A6FE8] transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-[#8A6FE8]/20">
-          <h3 class="font-semibold text-xl mb-6 text-[#8A6FE8] flex items-center gap-2">
-            <i class="ri-server-line"></i>
-            Backend Development
+
+        <!-- Frontend Technologies -->
+        <div class="bg-[#1B2735]/40 backdrop-blur-sm rounded-2xl p-8 border border-[#8A6FE8]/20 hover:border-[#8A6FE8]/40 transition-all duration-300 hover:scale-105 hover:shadow-xl hover:shadow-[#8A6FE8]/20 glow">
+          <h3 class="font-bold text-xl mb-6 text-[#8A6FE8] flex items-center gap-3">
+            <i class="ri-layout-line text-2xl"></i>
+            Frontend
           </h3>
-          <div class="grid grid-cols-2 gap-6">
-            <div class="flex flex-col items-center gap-2">
-              <i class="ri-nodejs-line text-[#8A6FE8] text-3xl hover:scale-125 transition-transform"></i>
-              <span class="text-sm text-gray-400">Node.js</span>
+          <div class="grid grid-cols-2 gap-4">
+            <div class="flex flex-col items-center gap-2 p-3 rounded-xl bg-gray-800/30 hover:bg-gray-700/40 transition-all">
+              <i class="ri-reactjs-line text-[#61DAFB] text-3xl hover:scale-125 transition-transform"></i>
+              <span class="text-sm text-gray-300">React.JS</span>
             </div>
-            <div class="flex flex-col items-center gap-2">
-              <i class="ri-server-line text-[#8A6FE8] text-3xl hover:scale-125 transition-transform"></i>
-              <span class="text-sm text-gray-400">Express</span>
+            <div class="flex flex-col items-center gap-2 p-3 rounded-xl bg-gray-800/30 hover:bg-gray-700/40 transition-all">
+              <i class="ri-html5-line text-[#E34F26] text-3xl hover:scale-125 transition-transform"></i>
+              <span class="text-sm text-gray-300">HTML5</span>
             </div>
-            <div class="flex flex-col items-center gap-2">
-              <i class="ri-python-line text-[#8A6FE8] text-3xl hover:scale-125 transition-transform"></i>
-              <span class="text-sm text-gray-400">Python</span>
+            <div class="flex flex-col items-center gap-2 p-3 rounded-xl bg-gray-800/30 hover:bg-gray-700/40 transition-all">
+              <i class="ri-css3-line text-[#1572B6] text-3xl hover:scale-125 transition-transform"></i>
+              <span class="text-sm text-gray-300">CSS3</span>
             </div>
-            <div class="flex flex-col items-center gap-2">
+            <div class="flex flex-col items-center gap-2 p-3 rounded-xl bg-gray-800/30 hover:bg-gray-700/40 transition-all">
+              <i class="ri-tailwind-css-line text-[#06B6D4] text-3xl hover:scale-125 transition-transform"></i>
+              <span class="text-sm text-gray-300">TailwindCSS</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Backend Technologies -->
+        <div class="bg-[#1B2735]/40 backdrop-blur-sm rounded-2xl p-8 border border-[#8A6FE8]/20 hover:border-[#8A6FE8]/40 transition-all duration-300 hover:scale-105 hover:shadow-xl hover:shadow-[#8A6FE8]/20 glow">
+          <h3 class="font-bold text-xl mb-6 text-[#8A6FE8] flex items-center gap-3">
+            <i class="ri-server-line text-2xl"></i>
+            Backend
+          </h3>
+          <div class="grid grid-cols-2 gap-4">
+            <div class="flex flex-col items-center gap-2 p-3 rounded-xl bg-gray-800/30 hover:bg-gray-700/40 transition-all">
+              <i class="ri-nodejs-line text-[#339933] text-3xl hover:scale-125 transition-transform"></i>
+              <span class="text-sm text-gray-300">Node.JS</span>
+            </div>
+            <div class="flex flex-col items-center gap-2 p-3 rounded-xl bg-gray-800/30 hover:bg-gray-700/40 transition-all">
+              <i class="ri-flask-line text-[#000000] text-3xl hover:scale-125 transition-transform"></i>
+              <span class="text-sm text-gray-300">Flask</span>
+            </div>
+            <div class="flex flex-col items-center gap-2 p-3 rounded-xl bg-gray-800/30 hover:bg-gray-700/40 transition-all">
+              <i class="ri-speed-line text-[#000000] text-3xl hover:scale-125 transition-transform"></i>
+              <span class="text-sm text-gray-300">Express.JS</span>
+            </div>
+            <div class="flex flex-col items-center gap-2 p-3 rounded-xl bg-gray-800/30 hover:bg-gray-700/40 transition-all">
               <i class="ri-code-box-line text-[#8A6FE8] text-3xl hover:scale-125 transition-transform"></i>
-              <span class="text-sm text-gray-400">REST API</span>
+              <span class="text-sm text-gray-300">REST API</span>
             </div>
           </div>
         </div>
-        <div
-          class="border border-[#4A3B8C] bg-[#1B1535] rounded-lg p-8 hover:border-[#8A6FE8] transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-[#8A6FE8]/20">
-          <h3 class="font-semibold text-xl mb-6 text-[#8A6FE8] flex items-center gap-2">
-            <i class="ri-tools-line"></i>
-            Databases & Tools
+
+        <!-- Data & Tools -->
+        <div class="bg-[#1B2735]/40 backdrop-blur-sm rounded-2xl p-8 border border-[#8A6FE8]/20 hover:border-[#8A6FE8]/40 transition-all duration-300 hover:scale-105 hover:shadow-xl hover:shadow-[#8A6FE8]/20 glow">
+          <h3 class="font-bold text-xl mb-6 text-[#8A6FE8] flex items-center gap-3">
+            <i class="ri-database-2-line text-2xl"></i>
+            Data & Tools
           </h3>
-          <div class="grid grid-cols-2 gap-6">
-            <div class="flex flex-col items-center gap-2">
-              <i class="ri-database-2-line text-[#8A6FE8] text-3xl hover:scale-125 transition-transform"></i>
-              <span class="text-sm text-gray-400">MongoDB</span>
+          <div class="grid grid-cols-2 gap-4">
+            <div class="flex flex-col items-center gap-2 p-3 rounded-xl bg-gray-800/30 hover:bg-gray-700/40 transition-all">
+              <i class="ri-database-2-line text-[#47A248] text-3xl hover:scale-125 transition-transform"></i>
+              <span class="text-sm text-gray-300">MongoDB</span>
             </div>
-            <div class="flex flex-col items-center gap-2">
-              <i class="ri-database-line text-[#8A6FE8] text-3xl hover:scale-125 transition-transform"></i>
-              <span class="text-sm text-gray-400">MySQL</span>
+            <div class="flex flex-col items-center gap-2 p-3 rounded-xl bg-gray-800/30 hover:bg-gray-700/40 transition-all">
+              <i class="ri-database-line text-[#4479A1] text-3xl hover:scale-125 transition-transform"></i>
+              <span class="text-sm text-gray-300">MySQL</span>
             </div>
-            <div class="flex flex-col items-center gap-2">
-              <i class="ri-git-branch-line text-[#8A6FE8] text-3xl hover:scale-125 transition-transform"></i>
-              <span class="text-sm text-gray-400">Git</span>
+            <div class="flex flex-col items-center gap-2 p-3 rounded-xl bg-gray-800/30 hover:bg-gray-700/40 transition-all">
+              <i class="ri-git-branch-line text-[#F05032] text-3xl hover:scale-125 transition-transform"></i>
+              <span class="text-sm text-gray-300">Git</span>
             </div>
-            <div class="flex flex-col items-center gap-2">
-              <i class="ri-github-line text-[#8A6FE8] text-3xl hover:scale-125 transition-transform"></i>
-              <span class="text-sm text-gray-400">GitHub</span>
+            <div class="flex flex-col items-center gap-2 p-3 rounded-xl bg-gray-800/30 hover:bg-gray-700/40 transition-all">
+              <i class="ri-github-line text-[#181717] text-3xl hover:scale-125 transition-transform"></i>
+              <span class="text-sm text-gray-300">GitHub</span>
+            </div>
+            <div class="flex flex-col items-center gap-2 p-3 rounded-xl bg-gray-800/30 hover:bg-gray-700/40 transition-all">
+              <i class="ri-bar-chart-line text-[#FF6B6B] text-3xl hover:scale-125 transition-transform"></i>
+              <span class="text-sm text-gray-300">Matplotlib</span>
+            </div>
+            <div class="flex flex-col items-center gap-2 p-3 rounded-xl bg-gray-800/30 hover:bg-gray-700/40 transition-all">
+              <i class="ri-file-chart-line text-[#150458] text-3xl hover:scale-125 transition-transform"></i>
+              <span class="text-sm text-gray-300">Pandas</span>
+            </div>
+            <div class="flex flex-col items-center gap-2 p-3 rounded-xl bg-gray-800/30 hover:bg-gray-700/40 transition-all">
+              <i class="ri-functions text-[#013243] text-3xl hover:scale-125 transition-transform"></i>
+              <span class="text-sm text-gray-300">NumPy</span>
             </div>
           </div>
         </div>
@@ -424,52 +540,83 @@
     </div>
   </section>
   <section id="projects" class="py-20 relative z-10">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center">
-      <h2 class="text-4xl font-bold text-center mb-16 gradient-text tracking-widest uppercase">Featured Projects</h2>
-      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-12 w-full">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-4xl font-bold gradient-text tracking-widest uppercase mb-4">Featured Projects</h2>
+        <p class="text-gray-400 max-w-3xl mx-auto">Explore my latest work showcasing innovative solutions, cutting-edge technologies, and creative problem-solving</p>
+      </div>
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 w-full">
         <div
-          class="bg-[#1B2735] rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 hover:-translate-y-2 glow">
+          class="bg-[#1B2735]/40 backdrop-blur-sm rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105 hover:-translate-y-2 glow border border-[#8A6FE8]/20">
           <img src="{{ url_for('static', filename='Project1.png') }}"
-            class="w-full h-48 object-cover" />
-          <div class="p-6">
-            <h3 class="text-xl font-semibold mb-2 tracking-wide">ThinkEd</h3>
-            <p class="text-gray-400 mb-4">Modern e-learning platform with seamless online learning experience.</p>
-            <div class="flex flex-wrap gap-2 mb-4">
-              <span class="px-3 py-1 bg-gray-700 rounded-full text-sm tracking-wider">React</span>
-              <span class="px-3 py-1 bg-gray-700 rounded-full text-sm tracking-wider">Node.js</span>
-              <span class="px-3 py-1 bg-gray-700 rounded-full text-sm tracking-wider">MongoDB</span>
+            class="w-full h-56 object-cover" />
+          <div class="p-8">
+            <div class="flex items-center gap-3 mb-3">
+              <h3 class="text-2xl font-bold tracking-wide gradient-text">AI Document Chat</h3>
+              <i class="ri-robot-line text-[#8A6FE8] text-2xl"></i>
             </div>
-            <a href="#" class="text-primary hover:underline cursor-pointer">View Project →</a>
+            <p class="text-gray-400 mb-6 leading-relaxed">Revolutionary AI-powered web application that enables intelligent conversations with your documents. Upload PDFs, ask questions, and get instant, contextual answers.</p>
+            <div class="flex flex-wrap gap-2 mb-6">
+              <span class="px-4 py-2 bg-gradient-to-r from-[#8A6FE8]/20 to-[#00f2ff]/20 border border-[#8A6FE8]/30 rounded-full text-sm font-medium text-[#8A6FE8]">AI/ML</span>
+              <span class="px-4 py-2 bg-gradient-to-r from-[#8A6FE8]/20 to-[#00f2ff]/20 border border-[#8A6FE8]/30 rounded-full text-sm font-medium text-[#8A6FE8]">Python</span>
+              <span class="px-4 py-2 bg-gradient-to-r from-[#8A6FE8]/20 to-[#00f2ff]/20 border border-[#8A6FE8]/30 rounded-full text-sm font-medium text-[#8A6FE8]">Flask</span>
+              <span class="px-4 py-2 bg-gradient-to-r from-[#8A6FE8]/20 to-[#00f2ff]/20 border border-[#8A6FE8]/30 rounded-full text-sm font-medium text-[#8A6FE8]">NLP</span>
+            </div>
+            <div class="flex gap-3">
+              <a href="https://document-app-production.up.railway.app/" target="_blank" rel="noopener noreferrer"
+                 class="flex-1 bg-gradient-to-r from-[#8A6FE8] to-[#00f2ff] text-white px-6 py-3 rounded-xl font-semibold hover:from-[#7A5FD8] hover:to-[#00d9e6] transition-all duration-300 transform hover:scale-105 text-center flex items-center justify-center gap-2">
+                <i class="ri-external-link-line"></i>
+                Live Demo
+              </a>
+            </div>
           </div>
         </div>
         <div
-          class="bg-[#1B2735] rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 hover:-translate-y-2 glow">
+          class="bg-[#1B2735]/40 backdrop-blur-sm rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105 hover:-translate-y-2 glow border border-[#8A6FE8]/20">
           <img src="{{ url_for('static', filename='Project2.png') }}"
-            class="w-full h-48 object-cover" />
-          <div class="p-6">
-            <h3 class="text-xl font-semibold mb-2">ExchangeX</h3>
-            <p class="text-gray-400 mb-4">Virtual barter marketplace for item exchange and trading.</p>
-            <div class="flex flex-wrap gap-2 mb-4">
-              <span class="px-3 py-1 bg-gray-700 rounded-full text-sm tracking-wider">React</span>
-              <span class="px-3 py-1 bg-gray-700 rounded-full text-sm tracking-wider">Express.js</span>
-              <span class="px-3 py-1 bg-gray-700 rounded-full text-sm tracking-wider">MongoDB</span>
+            class="w-full h-56 object-cover" />
+          <div class="p-8">
+            <div class="flex items-center gap-3 mb-3">
+              <h3 class="text-2xl font-bold tracking-wide gradient-text">ExchangeX</h3>
+              <i class="ri-exchange-line text-[#8A6FE8] text-2xl"></i>
             </div>
-            <a href="#" class="text-primary hover:underline cursor-pointer">View Project →</a>
+            <p class="text-gray-400 mb-6 leading-relaxed">Innovative virtual marketplace enabling seamless item exchange and trading with intelligent matching algorithms and secure transaction handling.</p>
+            <div class="flex flex-wrap gap-2 mb-6">
+              <span class="px-4 py-2 bg-gradient-to-r from-[#8A6FE8]/20 to-[#00f2ff]/20 border border-[#8A6FE8]/30 rounded-full text-sm font-medium text-[#8A6FE8]">React</span>
+              <span class="px-4 py-2 bg-gradient-to-r from-[#8A6FE8]/20 to-[#00f2ff]/20 border border-[#8A6FE8]/30 rounded-full text-sm font-medium text-[#8A6FE8]">Express.js</span>
+              <span class="px-4 py-2 bg-gradient-to-r from-[#8A6FE8]/20 to-[#00f2ff]/20 border border-[#8A6FE8]/30 rounded-full text-sm font-medium text-[#8A6FE8]">MongoDB</span>
+              <span class="px-4 py-2 bg-gradient-to-r from-[#8A6FE8]/20 to-[#00f2ff]/20 border border-[#8A6FE8]/30 rounded-full text-sm font-medium text-[#8A6FE8]">Node.js</span>
+            </div>
+            <div class="flex gap-3">
+              <a href="#" class="flex-1 bg-[#1B2735] border border-[#8A6FE8]/50 text-[#8A6FE8] px-6 py-3 rounded-xl font-semibold hover:bg-[#8A6FE8]/10 transition-all duration-300 text-center flex items-center justify-center gap-2">
+                <i class="ri-code-line"></i>
+                View Project
+              </a>
+            </div>
           </div>
         </div>
         <div
-          class="bg-[#1B2735] rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 hover:-translate-y-2 glow">
+          class="bg-[#1B2735]/40 backdrop-blur-sm rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105 hover:-translate-y-2 glow border border-[#8A6FE8]/20">
           <img src="{{ url_for('static', filename='Project3.png') }}"
-            class="w-full h-48 object-cover" />
-          <div class="p-6">
-            <h3 class="text-xl font-semibold mb-2">HealthCare Chatbot</h3>
-            <p class="text-gray-400 mb-4">AI-powered healthcare assistant for basic medical guidance.</p>
-            <div class="flex flex-wrap gap-2 mb-4">
-              <span class="px-3 py-1 bg-gray-700 rounded-full text-sm tracking-wider">JavaScript</span>
-              <span class="px-3 py-1 bg-gray-700 rounded-full text-sm tracking-wider">Node.js</span>
-              <span class="px-3 py-1 bg-gray-700 rounded-full text-sm tracking-wider">Express.js</span>
+            class="w-full h-56 object-cover" />
+          <div class="p-8">
+            <div class="flex items-center gap-3 mb-3">
+              <h3 class="text-2xl font-bold tracking-wide gradient-text">HealthCare AI Bot</h3>
+              <i class="ri-health-book-line text-[#8A6FE8] text-2xl"></i>
             </div>
-            <a href="#" class="text-primary hover:underline cursor-pointer">View Project →</a>
+            <p class="text-gray-400 mb-6 leading-relaxed">Intelligent healthcare assistant powered by AI, providing instant medical guidance, symptom analysis, and health recommendations with natural language processing.</p>
+            <div class="flex flex-wrap gap-2 mb-6">
+              <span class="px-4 py-2 bg-gradient-to-r from-[#8A6FE8]/20 to-[#00f2ff]/20 border border-[#8A6FE8]/30 rounded-full text-sm font-medium text-[#8A6FE8]">JavaScript</span>
+              <span class="px-4 py-2 bg-gradient-to-r from-[#8A6FE8]/20 to-[#00f2ff]/20 border border-[#8A6FE8]/30 rounded-full text-sm font-medium text-[#8A6FE8]">Node.js</span>
+              <span class="px-4 py-2 bg-gradient-to-r from-[#8A6FE8]/20 to-[#00f2ff]/20 border border-[#8A6FE8]/30 rounded-full text-sm font-medium text-[#8A6FE8]">Express.js</span>
+              <span class="px-4 py-2 bg-gradient-to-r from-[#8A6FE8]/20 to-[#00f2ff]/20 border border-[#8A6FE8]/30 rounded-full text-sm font-medium text-[#8A6FE8]">AI</span>
+            </div>
+            <div class="flex gap-3">
+              <a href="#" class="flex-1 bg-[#1B2735] border border-[#8A6FE8]/50 text-[#8A6FE8] px-6 py-3 rounded-xl font-semibold hover:bg-[#8A6FE8]/10 transition-all duration-300 text-center flex items-center justify-center gap-2">
+                <i class="ri-code-line"></i>
+                View Project
+              </a>
+            </div>
           </div>
         </div>
       </div>
@@ -477,34 +624,84 @@
     </div>
   </section>
   <section id="contact" class="py-20 relative z-10">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center">
-      <h2 class="text-4xl font-bold text-center mb-16 gradient-text tracking-widest uppercase">Get In Touch</h2>
-      <div class="max-w-xl mx-auto">
-        <form class="space-y-6">
-          <div>
-            <label class="block text-sm font-medium text-gray-300 mb-2">Name</label>
-            <input type="text"
-              class="w-[500px] px-4 py-2 border border-gray-600 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-all bg-gray-700 text-white placeholder-gray-400"
-              placeholder="Your name" />
-          </div>
-          <div>
-            <label class="block text-sm font-medium text-gray-300 mb-2">Email</label>
-            <input type="email"
-              class="w-[500px] px-4 py-2 border border-gray-600 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-all bg-gray-700 text-white placeholder-gray-400"
-              placeholder="your@email.com" />
-          </div>
-          <div>
-            <label class="block text-sm font-medium text-gray-300 mb-2">Message</label>
-            <textarea
-              class="w-[500px] px-4 py-2 border border-gray-600 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-all h-32 bg-gray-700 text-white placeholder-gray-400"
-              placeholder="Your message"></textarea>
-          </div>
-          <button type="submit"
-            class="w-[500px] bg-primary text-white px-6 py-3 rounded-button hover:opacity-90 transition-opacity cursor-pointer">Send
-            Message</button>
-        </form>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-4xl font-bold gradient-text tracking-widest uppercase mb-4">Get In Touch</h2>
+        <p class="text-gray-400 max-w-2xl mx-auto">Ready to bring your ideas to life? Let's collaborate and create something amazing together!</p>
       </div>
-    </div>
+      
+      <!-- Flash Messages -->
+      {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+          <div class="max-w-2xl mx-auto mb-8">
+            {% for category, message in messages %}
+              <div class="p-4 rounded-xl mb-4 backdrop-blur-sm border 
+                         {{ 'bg-red-900/20 border-red-500/30 text-red-200' if category == 'error' else 'bg-green-900/20 border-green-500/30 text-green-200' }}">
+                <div class="flex items-center">
+                  <i class="ri-{{ 'error-warning' if category == 'error' else 'check-double' }}-line text-xl mr-3"></i>
+                  {{ message }}
+                </div>
+              </div>
+            {% endfor %}
+          </div>
+        {% endif %}
+      {% endwith %}
+      
+      <div class="max-w-2xl mx-auto">
+        <div class="bg-[#1B2735]/40 backdrop-blur-sm rounded-2xl p-8 border border-[#8A6FE8]/20 glow">
+          <form method="POST" action="/contactus" class="space-y-6">
+            <!-- CSRF Token (if available) -->
+            {% if csrf_token %}
+              <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
+            {% endif %}
+            
+            <div class="grid md:grid-cols-2 gap-6">
+              <div>
+                <label class="block text-sm font-medium text-gray-300 mb-3" for="name">
+                  <i class="ri-user-line mr-2"></i>Full Name
+                </label>
+                <input type="text" 
+                       id="name"
+                       name="name"
+                       required
+                       class="w-full px-4 py-4 border border-gray-600/50 rounded-xl focus:ring-2 focus:ring-[#8A6FE8] focus:border-[#8A6FE8] transition-all duration-300 bg-gray-800/50 text-white placeholder-gray-400 backdrop-blur-sm"
+                       placeholder="Enter your full name" />
+              </div>
+              <div>
+                <label class="block text-sm font-medium text-gray-300 mb-3" for="email">
+                  <i class="ri-mail-line mr-2"></i>Email Address
+                </label>
+                <input type="email" 
+                       id="email"
+                       name="email"
+                       required
+                       class="w-full px-4 py-4 border border-gray-600/50 rounded-xl focus:ring-2 focus:ring-[#8A6FE8] focus:border-[#8A6FE8] transition-all duration-300 bg-gray-800/50 text-white placeholder-gray-400 backdrop-blur-sm"
+                       placeholder="your.email@example.com" />
+              </div>
+            </div>
+            
+            <div>
+              <label class="block text-sm font-medium text-gray-300 mb-3" for="message">
+                <i class="ri-message-3-line mr-2"></i>Your Message
+              </label>
+              <textarea id="message"
+                        name="message"
+                        required
+                        minlength="10"
+                        rows="6"
+                        class="w-full px-4 py-4 border border-gray-600/50 rounded-xl focus:ring-2 focus:ring-[#8A6FE8] focus:border-[#8A6FE8] transition-all duration-300 bg-gray-800/50 text-white placeholder-gray-400 backdrop-blur-sm resize-none"
+                        placeholder="Tell me about your project ideas, questions, or how we can collaborate..."></textarea>
+            </div>
+            
+            <button type="submit"
+                    class="w-full bg-gradient-to-r from-[#8A6FE8] to-[#00f2ff] text-white px-8 py-4 rounded-xl font-semibold hover:from-[#7A5FD8] hover:to-[#00d9e6] transition-all duration-300 transform hover:scale-105 hover:shadow-lg hover:shadow-[#8A6FE8]/30 flex items-center justify-center gap-3">
+              <i class="ri-send-plane-line"></i>
+              Send Message
+              <i class="ri-arrow-right-line"></i>
+            </button>
+          </form>
+        </div>
+      </div>
     </div>
   </section>
   <footer class="relative text-white py-12 z-10">
@@ -616,14 +813,8 @@
           });
         });
       });
-      const form = document.querySelector("form");
-      form.addEventListener("submit", (e) => {
-        e.preventDefault();
-        const formData = new FormData(form);
-        const data = Object.fromEntries(formData);
-        console.log("Form submitted:", data);
-        form.reset();
-      });
+      
+      // Handle page load with hash
       const hash = window.location.hash;
       if (hash) {
         const targetSection = document.querySelector(hash);

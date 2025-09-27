@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Server Error - Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet">
+    <style>
+        .galaxy-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(ellipse at bottom, #1B2735 0%, #090A0F 100%);
+            z-index: -1;
+        }
+    </style>
+</head>
+<body class="bg-[#090A0F] min-h-screen text-gray-100 relative">
+    <div class="galaxy-bg"></div>
+    
+    <div class="min-h-screen flex items-center justify-center px-4">
+        <div class="text-center max-w-md mx-auto">
+            <div class="mb-8">
+                <i class="ri-error-warning-line text-6xl text-red-400 mb-4"></i>
+                <h1 class="text-4xl font-bold text-white mb-2">500</h1>
+                <h2 class="text-2xl font-semibold text-gray-300 mb-4">Internal Server Error</h2>
+                <p class="text-gray-400 mb-8">
+                    Something went wrong on our end. We're working to fix this issue.
+                </p>
+            </div>
+            
+            <div class="space-y-4">
+                <a href="{{ url_for('main.index') }}" 
+                   class="inline-block bg-[#8A6FE8] text-white px-6 py-3 rounded-lg hover:bg-[#7A5FD8] transition-colors">
+                    <i class="ri-home-line mr-2"></i>
+                    Go Home
+                </a>
+                
+                <div class="text-sm text-gray-500">
+                    <p>Please try again later or contact support if the problem persists.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
