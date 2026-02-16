@@ -1,277 +1,177 @@
-# Flask Portfolio - Professional Portfolio Website
+﻿# Arjun Walia - Full Stack Developer Portfolio
 
-A modern, production-ready portfolio website built with Flask, featuring a responsive design, secure contact forms, and professional presentation of skills and projects.
+A modern, responsive portfolio website built with Flask and Tailwind CSS, featuring a class-based dark mode, technical skill clusters visualization, and a secure contact form with MongoDB integration.
 
-## ✨ Features
+## Features
 
-- **Modern Design**: Clean, professional UI with Tailwind CSS
-- **Responsive Layout**: Mobile-first approach with seamless responsive design
-- **Contact Form**: Secure contact form with MongoDB integration
+- **Modern Technical Aesthetic**: Clean, professional UI with a systems/engineering theme
+- **Light/Dark Mode**: Toggle-based theme with localStorage persistence (defaults to light)
+- **Fully Responsive**: Mobile-first design from 375px to ultrawide screens
+- **Technical Skill Clusters**: Stitch-inspired capability clusters with animated progress indicators
+- **Contact Form**: Secure form with MongoDB integration and CSRF protection
+- **Interactive Elements**: Floating hero visualization, tech ticker, section animations
 - **Production Ready**: Application factory pattern, blueprints, and proper configuration
-- **Security**: CSRF protection, input validation, security headers
-- **Error Handling**: Custom error pages and robust error handling
-- **Professional Structure**: Modular codebase following Flask best practices
 
-## 🚀 Technology Stack
+## Sections
+
+| Section | Description |
+|---------|-------------|
+| **Hero** | Full-stack developer title, CTAs, stats, animated node visualization |
+| **About** | Profile image, introduction, identity cards (Clean Code, UI/UX, Collaboration, AI) |
+| **Skills** | 4 capability clusters (Languages, Frontend, Backend, Data Science & Tools) with sidebar panel |
+| **Projects** | Featured work: AI Document Chat, ExchangeX, HealthCare AI Bot |
+| **Contact** | Terminal-styled contact form, response time, social links |
+| **Footer** | Quick links, social icons, copyright |
+
+## Technology Stack
 
 ### Backend
 - **Flask 3.0.0** - Web framework
 - **Python 3.8+** - Programming language
-- **MongoDB** - Database for contact form submissions
+- **MongoDB** - Database for contact submissions
 - **Flask-WTF** - Form handling and CSRF protection
-- **Gunicorn/Waitress** - Production WSGI server
+- **Gunicorn/Waitress** - Production WSGI servers
 
 ### Frontend
-- **Tailwind CSS** - Utility-first CSS framework
-- **Vanilla JavaScript** - Interactive features
-- **Responsive Design** - Mobile-first approach
-- **Modern CSS** - Grid, Flexbox, animations
+- **Tailwind CSS v3.4.16** - CDN with forms plugin, class-based darkMode
+- **Inter + JetBrains Mono** - Display and monospace fonts (Google Fonts)
+- **Material Icons + Symbols** - Icon system
+- **Vanilla JavaScript** - Theme toggle, mobile menu, smooth scroll, section animations
 
-### Development & Production
-- **python-dotenv** - Environment variable management
-- **Structured Logging** - Application monitoring
-- **Error Handling** - Custom error pages
-- **Security Headers** - Enhanced security
+### Design System
 
-## 📋 Prerequisites
+| Token | Light | Dark |
+|-------|-------|------|
+| Background | #f5f6f8 | #121212 |
+| Surface | #ffffff | #161b2e |
+| Border | #e2e5ea | #232942 |
+| Primary | #0d33f2 | #0d33f2 |
+| Text | gray-900 | gray-100 |
 
-- Python 3.8 or higher
-- MongoDB (local installation or cloud service like MongoDB Atlas)
-- Node.js (optional, for any future frontend tooling)
+## Prerequisites
 
-## 🔧 Installation & Setup
+- Python 3.8+
+- MongoDB (local or Atlas)
+- Modern browser with CSS Grid/Flexbox support
 
-### 1. Clone the Repository
+## Installation
+
 ```bash
-git clone https://github.com/yourusername/flask-portfolio.git
-cd flask-portfolio
-```
+# Clone
+git clone https://github.com/Arjun-Walia/portfolioMain.git
+cd portfolioMain
 
-### 2. Create Virtual Environment
-```bash
-# Windows
+# Virtual environment
 python -m venv venv
-venv\Scripts\activate
+venv\Scripts\activate  # Windows
+source venv/bin/activate  # Linux/Mac
 
-# Linux/Mac
-python3 -m venv venv
-source venv/bin/activate
-```
-
-### 3. Install Dependencies
-```bash
-# Development (includes testing tools)
+# Install dependencies
 pip install -r requirements.txt
-
-# Production only
-pip install -r requirements-prod.txt
 ```
 
-### 4. Environment Configuration
-Create a `.env` file in the project root:
-```env
-# Flask Configuration
-SECRET_KEY=your-secret-key-here-change-in-production
-FLASK_ENV=development
+Create a `.env` file:
 
-# MongoDB Configuration
+```env
+SECRET_KEY=your-secret-key
 MONGODB_URI=mongodb://localhost:27017/
 DATABASE_NAME=Portfolio
-
-# Mail Configuration (Optional)
-MAIL_SERVER=smtp.gmail.com
-MAIL_PORT=587
-MAIL_USE_TLS=true
-MAIL_USERNAME=your-email@gmail.com
-MAIL_PASSWORD=your-app-password
 ```
 
-### 5. Database Setup
-Ensure MongoDB is running:
+## Running
+
+### Development
 ```bash
-# Local MongoDB
-mongod
-
-# Or use MongoDB Atlas cloud service
-# Update MONGODB_URI in .env file with your Atlas connection string
+python main.py
+# Visit http://localhost:5000
 ```
 
-## 🏃‍♂️ Running the Application
-
-### Development Mode
+### Production (Windows)
 ```bash
-python app.py
+deploy.bat
+# or: python waitress_server.py
 ```
-Visit: http://localhost:5000
 
-### Production Mode
-
-#### Linux/Unix (Gunicorn)
+### Production (Linux/Unix)
 ```bash
 chmod +x deploy.sh
 ./deploy.sh
+# or: gunicorn -c gunicorn_config.py wsgi:app
 ```
 
-#### Windows (Waitress)
-```bash
-deploy.bat
-```
-
-#### Manual Production Start
-```bash
-# Using Gunicorn (Linux/Unix)
-gunicorn -c gunicorn_config.py wsgi:app
-
-# Using Waitress (Windows)
-python waitress_server.py
-```
-
-## 🏗️ Project Structure
+## Project Structure
 
 ```
-flask-portfolio/
-├── app/                    # Application package
-│   ├── __init__.py        # Application factory
-│   ├── config.py          # Configuration classes
-│   └── main/              # Main blueprint
-│       ├── __init__.py    # Blueprint initialization
-│       ├── routes.py      # Route handlers
-│       └── forms.py       # WTF Forms
-├── templates/             # Jinja2 templates
-│   ├── index.html         # Main portfolio page
-│   └── errors/            # Error pages
-│       ├── 404.html
-│       ├── 500.html
-│       └── 403.html
-├── static/                # Static assets
-│   ├── *.jpg, *.png       # Images
-│   └── *.pdf              # Documents
-├── logs/                  # Application logs (created automatically)
-├── app.py                 # Development entry point
-├── wsgi.py                # Production WSGI entry point
-├── waitress_server.py     # Windows production server
-├── gunicorn_config.py     # Gunicorn configuration
-├── requirements.txt       # All dependencies
-├── requirements-prod.txt  # Production dependencies
-├── .env                   # Environment variables
-└── README.md             # This file
+portfolioMain/
+ app/                    # Application package
+    __init__.py         # App factory
+    config.py           # Configuration
+    main/               # Main blueprint
+        routes.py
+        forms.py
+ templates/
+    index.html          # Main portfolio (~960 lines)
+    errors/             # 403, 404, 500 pages
+ static/
+    profile.jpg         # Profile photo
+    Project1-3.png      # Project screenshots
+    CV.pdf              # Resume
+    sung.jpg            # Favicon
+ stitch_elite_engineer_portfolio_hero_dark/  # Design reference
+ main.py                 # Simple dev entry point
+ app.py                  # Factory entry point
+ wsgi.py                 # Production WSGI
+ waitress_server.py      # Windows production
+ gunicorn_config.py      # Gunicorn config
+ requirements.txt        # All dependencies
+ requirements-prod.txt   # Production deps
 ```
 
-## 🔐 Required Environment Variables
+## Theme Toggle
 
-| Variable | Description | Required | Default |
-|----------|-------------|----------|---------|
-| `SECRET_KEY` | Flask secret key for sessions | Yes | - |
-| `FLASK_ENV` | Application environment | No | `development` |
-| `MONGODB_URI` | MongoDB connection string | Yes | `mongodb://localhost:27017/` |
-| `DATABASE_NAME` | MongoDB database name | No | `Portfolio` |
-| `PORT` | Server port | No | `5000` |
-| `MAIL_SERVER` | SMTP server for emails | No | - |
-| `MAIL_USERNAME` | SMTP username | No | - |
-| `MAIL_PASSWORD` | SMTP password | No | - |
+The portfolio defaults to **light mode** and respects user preference via localStorage:
 
-## 🛠️ Development
+```javascript
+// Flash prevention in <head>
+if (localStorage.getItem('theme') === 'dark') {
+  document.documentElement.classList.add('dark');
+}
 
-### Running Tests
-```bash
-pytest
+// Toggle button handler
+html.classList.toggle("dark");
+localStorage.setItem("theme", html.classList.contains("dark") ? "dark" : "light");
 ```
 
-### Code Quality
-```bash
-# Check code style
-flake8 app/ --max-line-length=100
+## Responsive Breakpoints
 
-# Format code (if using black)
-black app/
-```
+| Breakpoint | Width | Adjustments |
+|------------|-------|-------------|
+| Default | < 640px | Hidden hero viz, compact padding, smaller headings |
+| sm | >= 640px | Larger buttons, flex-row CTAs |
+| md | >= 768px | Desktop nav visible |
+| lg | >= 1024px | Hero visualization shown, 12-col grid |
 
-### Adding New Features
-1. Create new routes in `app/main/routes.py`
-2. Add forms in `app/main/forms.py`
-3. Create templates in `templates/`
-4. Update static assets in `static/`
+## Environment Variables
 
-## 🚀 Deployment
+| Variable | Required | Default | Description |
+|----------|----------|---------|-------------|
+| SECRET_KEY | Yes | - | Flask session key |
+| MONGODB_URI | Yes | mongodb://localhost:27017/ | Database connection |
+| DATABASE_NAME | No | Portfolio | MongoDB database |
+| PORT | No | 5000 | Server port |
+| FLASK_ENV | No | development | Environment mode |
 
-### Environment Setup
-1. Set `FLASK_ENV=production`
-2. Configure production MongoDB URI
-3. Set strong `SECRET_KEY`
-4. Configure mail settings (optional)
+## Contact & Links
 
-### Security Considerations
-- Always use HTTPS in production
-- Set secure MongoDB credentials
-- Use environment variables for secrets
-- Enable firewall rules
-- Regular security updates
+- **GitHub**: [Arjun-Walia](https://github.com/Arjun-Walia)
+- **LinkedIn**: [arjunwalia888](https://linkedin.com/in/arjunwalia888)
+- **LeetCode**: [Arjun_Walia](https://leetcode.com/u/Arjun_Walia/)
+- **Email**: arjunwalia957@gmail.com
 
-### Hosting Options
-- **Heroku**: Use `wsgi.py` as entry point
-- **DigitalOcean**: Use Gunicorn with reverse proxy (Nginx)
-- **AWS EC2**: Configure with load balancer
-- **VPS**: Use systemd service with Gunicorn
+## License
 
-## 🐛 Troubleshooting
-
-### Common Issues
-
-**Database Connection Error**
-- Ensure MongoDB is running
-- Check MONGODB_URI in .env
-- Verify network connectivity
-
-**Port Already in Use**
-- Change PORT in .env
-- Kill existing processes: `lsof -ti:5000 | xargs kill -9`
-
-**CSS Not Loading**
-- Check static file paths
-- Ensure CDN connections
-- Verify Tailwind CSS CDN
-
-**Form Submission Issues**
-- Verify CSRF token
-- Check form field names
-- Review browser console for errors
-
-## 🤝 Contributing
-
-1. Fork the repository
-2. Create a feature branch
-3. Make your changes
-4. Add tests
-5. Submit a pull request
-
-## 📄 License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-## 📞 Contact
-
-- **Email**: your.email@domain.com
-- **GitHub**: [yourusername](https://github.com/yourusername)
-- **LinkedIn**: [yourprofile](https://linkedin.com/in/yourprofile)
+MIT License - see [LICENSE](LICENSE) for details.
 
 ---
 
-## 🎯 Performance & Best Practices
-
-### Implemented Best Practices
-- ✅ Application factory pattern
-- ✅ Blueprint organization
-- ✅ Environment-based configuration
-- ✅ Secure form handling
-- ✅ Error handling and logging
-- ✅ Security headers
-- ✅ Input validation
-- ✅ Mobile-first responsive design
-- ✅ Production-ready deployment
-
-### Performance Optimizations
-- CDN for external resources
-- Optimized static file serving
-- Database connection pooling
-- Proper error handling
-- Structured logging
+*Built with Flask, Tailwind CSS, and attention to detail.*

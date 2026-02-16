@@ -1,49 +1,26 @@
 <!DOCTYPE html>
-<html lang="en">
+<html class="dark" lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Access Forbidden - Portfolio</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet">
-    <style>
-        .galaxy-bg {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: radial-gradient(ellipse at bottom, #1B2735 0%, #090A0F 100%);
-            z-index: -1;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>403 — Access Forbidden</title>
+  <script>if(localStorage.getItem('theme')==='light')document.documentElement.classList.remove('dark');</script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>tailwind.config={darkMode:"class",theme:{extend:{colors:{primary:"#0d33f2"},fontFamily:{display:["Inter","system-ui","sans-serif"],mono:["JetBrains Mono","monospace"]}}}}</script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
 </head>
-<body class="bg-[#090A0F] min-h-screen text-gray-100 relative">
-    <div class="galaxy-bg"></div>
-    
-    <div class="min-h-screen flex items-center justify-center px-4">
-        <div class="text-center max-w-md mx-auto">
-            <div class="mb-8">
-                <i class="ri-shield-cross-line text-6xl text-orange-400 mb-4"></i>
-                <h1 class="text-4xl font-bold text-white mb-2">403</h1>
-                <h2 class="text-2xl font-semibold text-gray-300 mb-4">Access Forbidden</h2>
-                <p class="text-gray-400 mb-8">
-                    You don't have permission to access this resource.
-                </p>
-            </div>
-            
-            <div class="space-y-4">
-                <a href="{{ url_for('main.index') }}" 
-                   class="inline-block bg-[#8A6FE8] text-white px-6 py-3 rounded-lg hover:bg-[#7A5FD8] transition-colors">
-                    <i class="ri-home-line mr-2"></i>
-                    Go Home
-                </a>
-                
-                <div class="text-sm text-gray-500">
-                    <p>If you believe you should have access, please contact the administrator.</p>
-                </div>
-            </div>
-        </div>
+<body class="bg-[#f5f6f8] dark:bg-[#121212] text-gray-900 dark:text-gray-100 font-display min-h-screen flex items-center justify-center px-6">
+  <div class="text-center max-w-md">
+    <div class="w-16 h-16 mx-auto mb-6 rounded-xl bg-orange-500/10 border border-orange-500/20 flex items-center justify-center">
+      <span class="material-icons-outlined text-3xl text-orange-500">shield</span>
     </div>
+    <p class="font-mono text-xs text-primary tracking-widest uppercase mb-2">Error 403</p>
+    <h1 class="text-4xl font-bold text-gray-900 dark:text-white mb-3">Access Forbidden</h1>
+    <p class="text-gray-500 dark:text-gray-400 mb-8">You don't have permission to access this resource.</p>
+    <a href="/" class="inline-flex items-center gap-2 px-6 py-3 bg-primary hover:bg-[#0a25b0] text-white text-sm font-medium rounded-md transition-colors">
+      <span class="material-icons-outlined text-sm">arrow_back</span>Go Home
+    </a>
+  </div>
 </body>
 </html>

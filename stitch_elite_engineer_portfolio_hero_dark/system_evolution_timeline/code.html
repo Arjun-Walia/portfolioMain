@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>System Evolution Timeline</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#0d33f2",
+                        "background-light": "#f5f6f8",
+                        "background-dark": "#101322",
+                        "surface-dark": "#161b2e",
+                        "surface-border": "#1e253e",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"],
+                        "mono": ["JetBrains Mono", "monospace"],
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    backgroundImage: {
+                        'grid-pattern': "linear-gradient(to right, #1e253e 1px, transparent 1px), linear-gradient(to bottom, #1e253e 1px, transparent 1px)",
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        /* Custom utilities for the timeline */
+        .timeline-line::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            width: 2px;
+            margin-left: -1px;
+            background-color: #1e253e; /* darker line */
+            z-index: 0;
+        }
+        
+        .timeline-progress::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            height: 75%; /* Simulating progress */
+            left: 50%;
+            width: 2px;
+            margin-left: -1px;
+            background: linear-gradient(to bottom, #0d33f2, #0d33f2 80%, transparent);
+            box-shadow: 0 0 15px #0d33f2;
+            z-index: 1;
+        }
+
+        .card-glow:hover {
+            box-shadow: 0 0 20px rgba(13, 51, 242, 0.15);
+            border-color: rgba(13, 51, 242, 0.5);
+        }
+
+        /* Technical background grid */
+        .bg-grid {
+            background-size: 40px 40px;
+            mask-image: linear-gradient(to bottom, transparent, black 10%, black 90%, transparent);
+            -webkit-mask-image: linear-gradient(to bottom, transparent, black 10%, black 90%, transparent);
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-gray-800 dark:text-gray-200 antialiased min-h-screen selection:bg-primary selection:text-white">
+<!-- Header Section -->
+<header class="sticky top-0 z-50 w-full border-b border-gray-200 dark:border-surface-border bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-md">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+<div class="flex items-center space-x-2">
+<div class="w-3 h-3 bg-primary rounded-full animate-pulse"></div>
+<span class="font-mono text-sm font-bold tracking-wider uppercase text-primary">System_V.4.0</span>
+</div>
+<nav class="hidden md:flex space-x-8 text-sm font-medium">
+<a class="text-gray-500 hover:text-primary dark:text-gray-400 dark:hover:text-primary transition-colors" href="#">Stack</a>
+<a class="text-primary dark:text-white" href="#">Evolution</a>
+<a class="text-gray-500 hover:text-primary dark:text-gray-400 dark:hover:text-primary transition-colors" href="#">Patents</a>
+</nav>
+<div class="flex items-center space-x-4">
+<span class="inline-flex items-center rounded-full bg-primary/10 px-2 py-1 text-xs font-mono font-medium text-primary ring-1 ring-inset ring-primary/20">
+                    STATUS: ONLINE
+                </span>
+</div>
+</div>
+</header>
+<main class="relative isolate overflow-hidden">
+<!-- Ambient Background Grid -->
+<div class="absolute inset-0 -z-10 opacity-[0.03] dark:opacity-[0.05] bg-grid-pattern bg-grid pointer-events-none"></div>
+<!-- Hero Title Area -->
+<div class="max-w-7xl mx-auto px-6 pt-24 pb-12 text-center">
+<div class="inline-flex items-center gap-2 px-3 py-1 rounded border border-surface-border bg-surface-dark/50 text-xs font-mono text-primary mb-6">
+<span class="material-icons text-[14px]">terminal</span>
+<span>ROOT ACCESS GRANTED</span>
+</div>
+<h1 class="text-4xl md:text-6xl font-bold tracking-tight text-gray-900 dark:text-white mb-6">
+                System Evolution <span class="text-primary">Log</span>
+</h1>
+<p class="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto font-light">
+                Architectural milestones and technical breakthroughs. A chronological visualization of scaled systems and engineering leadership.
+            </p>
+</div>
+<!-- Timeline Section -->
+<div class="relative max-w-5xl mx-auto px-4 sm:px-6 py-16">
+<!-- The Vertical Timeline Line -->
+<div class="absolute left-4 md:left-1/2 top-0 bottom-0 w-px md:-ml-px h-full pointer-events-none timeline-line timeline-progress hidden md:block"></div>
+<!-- Mobile line adjustment -->
+<div class="absolute left-8 top-0 bottom-0 w-px h-full bg-surface-border md:hidden timeline-line-mobile"></div>
+<div class="space-y-24 relative">
+<!-- Milestone 1 (Latest) -->
+<div class="relative z-10">
+<div class="md:flex items-center justify-between group">
+<!-- Date / Meta (Left side on desktop for right-aligned items, Right side for left-aligned) -->
+<div class="order-1 md:w-[45%] mb-4 md:mb-0 md:text-right md:pr-12">
+<div class="inline-flex flex-col items-start md:items-end">
+<span class="font-mono text-4xl font-bold text-white tracking-tighter">v4.2</span>
+<span class="text-sm font-mono text-primary mt-1">PRESENT • 2024</span>
+<span class="text-xs text-gray-500 uppercase tracking-widest mt-2 font-semibold">Lead AI Architect</span>
+</div>
+</div>
+<!-- Center Node -->
+<div class="order-1 md:order-2 absolute left-8 md:left-1/2 w-4 h-4 -ml-2 md:-ml-2 bg-background-dark border-2 border-primary rounded-none rotate-45 z-20 shadow-[0_0_15px_rgba(13,51,242,0.8)] mt-1.5 md:mt-0">
+<div class="absolute inset-0 bg-primary opacity-50 animate-ping"></div>
+</div>
+<!-- Content Card -->
+<div class="order-3 md:w-[45%] pl-16 md:pl-12">
+<div class="relative bg-surface-dark border border-surface-border rounded-lg p-6 hover:border-primary/50 transition-all duration-300 card-glow">
+<div class="absolute -top-3 -right-3">
+<div class="bg-primary/10 backdrop-blur-sm border border-primary/20 p-2 rounded text-primary">
+<span class="material-icons text-lg block">auto_awesome</span>
+</div>
+</div>
+<h3 class="text-xl font-semibold text-white mb-2 font-display">Generative Model Pipeline</h3>
+<p class="text-gray-400 text-sm leading-relaxed mb-4">
+                                    Architected a distributed inference engine reducing latency by 40%. Orchestrated the transition from monolithic PyTorch services to a microservices mesh on Kubernetes.
+                                </p>
+<!-- Technical Metrics -->
+<div class="bg-background-dark/50 rounded border border-surface-border p-3 mb-4 grid grid-cols-2 gap-4">
+<div>
+<p class="text-[10px] uppercase text-gray-500 font-mono">Inference</p>
+<p class="text-sm font-mono text-white">145ms <span class="text-green-500 text-xs">▼ 40%</span></p>
+</div>
+<div>
+<p class="text-[10px] uppercase text-gray-500 font-mono">Scale</p>
+<p class="text-sm font-mono text-white">50M req/day</p>
+</div>
+</div>
+<div class="flex flex-wrap gap-2">
+<span class="px-2 py-1 rounded bg-surface-border text-xs text-gray-300 font-mono border border-transparent hover:border-gray-500 transition-colors">Python</span>
+<span class="px-2 py-1 rounded bg-surface-border text-xs text-gray-300 font-mono border border-transparent hover:border-gray-500 transition-colors">Kubernetes</span>
+<span class="px-2 py-1 rounded bg-surface-border text-xs text-gray-300 font-mono border border-transparent hover:border-gray-500 transition-colors">Terraform</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Milestone 2 -->
+<div class="relative z-10">
+<div class="md:flex items-center justify-between flex-row-reverse group">
+<!-- Date / Meta -->
+<div class="order-1 md:w-[45%] mb-4 md:mb-0 md:text-left md:pl-12 text-left pl-16">
+<div class="inline-flex flex-col items-start">
+<span class="font-mono text-4xl font-bold text-gray-500 group-hover:text-white transition-colors tracking-tighter">v3.0</span>
+<span class="text-sm font-mono text-gray-500 mt-1">2021 • 2023</span>
+<span class="text-xs text-gray-500 uppercase tracking-widest mt-2 font-semibold">Senior Backend Engineer</span>
+</div>
+</div>
+<!-- Center Node -->
+<div class="order-1 md:order-2 absolute left-8 md:left-1/2 w-4 h-4 -ml-2 md:-ml-2 bg-background-dark border-2 border-surface-border group-hover:border-primary rounded-none rotate-45 z-20 transition-colors duration-500 mt-1.5 md:mt-0"></div>
+<!-- Content Card -->
+<div class="order-3 md:w-[45%] pl-16 md:pl-0 md:pr-12">
+<div class="relative bg-surface-dark border border-surface-border rounded-lg p-6 hover:border-primary/50 transition-all duration-300 card-glow group">
+<div class="absolute top-0 left-0 w-1 h-full bg-surface-border group-hover:bg-primary transition-colors rounded-l-lg"></div>
+<h3 class="text-xl font-semibold text-white mb-2 font-display">Distributed Event Systems</h3>
+<p class="text-gray-400 text-sm leading-relaxed mb-4">
+                                    Designed and implemented a high-throughput event streaming platform using Kafka. Solved critical data consistency issues across 12 distinct geographical regions.
+                                </p>
+<!-- System Diagram Visualization (Abstract) -->
+<div class="bg-background-dark rounded border border-surface-border p-3 mb-4 relative overflow-hidden h-20 flex items-center justify-center gap-4 opacity-80 group-hover:opacity-100 transition-opacity">
+<div class="w-2 h-2 bg-gray-600 rounded-full"></div>
+<div class="h-[1px] w-8 bg-gray-700"></div>
+<div class="w-8 h-8 border border-primary/40 bg-primary/10 rounded flex items-center justify-center">
+<span class="material-icons text-primary text-xs">hub</span>
+</div>
+<div class="h-[1px] w-8 bg-gray-700"></div>
+<div class="w-2 h-2 bg-gray-600 rounded-full"></div>
+</div>
+<div class="flex flex-wrap gap-2">
+<span class="px-2 py-1 rounded bg-surface-border text-xs text-gray-300 font-mono border border-transparent hover:border-gray-500 transition-colors">Kafka</span>
+<span class="px-2 py-1 rounded bg-surface-border text-xs text-gray-300 font-mono border border-transparent hover:border-gray-500 transition-colors">Go</span>
+<span class="px-2 py-1 rounded bg-surface-border text-xs text-gray-300 font-mono border border-transparent hover:border-gray-500 transition-colors">gRPC</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Milestone 3 -->
+<div class="relative z-10">
+<div class="md:flex items-center justify-between group">
+<!-- Date / Meta -->
+<div class="order-1 md:w-[45%] mb-4 md:mb-0 md:text-right md:pr-12 pl-16 md:pl-0">
+<div class="inline-flex flex-col items-start md:items-end">
+<span class="font-mono text-4xl font-bold text-gray-700 group-hover:text-white transition-colors tracking-tighter">v1.0</span>
+<span class="text-sm font-mono text-gray-500 mt-1">2018 • 2020</span>
+<span class="text-xs text-gray-500 uppercase tracking-widest mt-2 font-semibold">Founding Engineer</span>
+</div>
+</div>
+<!-- Center Node -->
+<div class="order-1 md:order-2 absolute left-8 md:left-1/2 w-4 h-4 -ml-2 md:-ml-2 bg-background-dark border-2 border-surface-border group-hover:border-primary rounded-none rotate-45 z-20 transition-colors duration-500 mt-1.5 md:mt-0"></div>
+<!-- Content Card -->
+<div class="order-3 md:w-[45%] pl-16 md:pl-12">
+<div class="relative bg-surface-dark border border-surface-border rounded-lg p-6 hover:border-primary/50 transition-all duration-300 card-glow">
+<h3 class="text-xl font-semibold text-white mb-2 font-display">MVP Core Architecture</h3>
+<p class="text-gray-400 text-sm leading-relaxed mb-4">
+                                    Employee #1. Built the monolithic MVP from scratch, enabling the company to secure Series A funding. Handled full-stack duties from database schema design to frontend deployment.
+                                </p>
+<div class="bg-background-dark/50 rounded border border-surface-border p-3 mb-4">
+<div class="flex items-center justify-between mb-1">
+<span class="text-[10px] uppercase text-gray-500 font-mono">Uptime</span>
+<span class="text-xs font-mono text-green-400">99.9%</span>
+</div>
+<div class="w-full bg-gray-700 rounded-full h-1.5">
+<div class="bg-green-500 h-1.5 rounded-full" style="width: 99.9%"></div>
+</div>
+</div>
+<div class="flex flex-wrap gap-2">
+<span class="px-2 py-1 rounded bg-surface-border text-xs text-gray-300 font-mono border border-transparent hover:border-gray-500 transition-colors">Node.js</span>
+<span class="px-2 py-1 rounded bg-surface-border text-xs text-gray-300 font-mono border border-transparent hover:border-gray-500 transition-colors">PostgreSQL</span>
+<span class="px-2 py-1 rounded bg-surface-border text-xs text-gray-300 font-mono border border-transparent hover:border-gray-500 transition-colors">AWS</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Start Node -->
+<div class="relative z-10 pb-12">
+<div class="absolute left-8 md:left-1/2 w-3 h-3 -ml-1.5 md:-ml-1.5 bg-surface-border rounded-full z-20"></div>
+<div class="pl-16 md:pl-0 text-left md:text-center pt-1">
+<span class="font-mono text-xs text-gray-600 bg-background-dark px-2">INITIAL_COMMIT</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Footer CTA -->
+<div class="border-t border-surface-border bg-surface-dark/30 mt-12">
+<div class="max-w-7xl mx-auto px-6 py-12 md:flex md:items-center md:justify-between">
+<div class="mb-6 md:mb-0">
+<h2 class="text-2xl font-bold text-white mb-2">System Status: <span class="text-green-500">Ready</span></h2>
+<p class="text-gray-400 text-sm max-w-md">
+                        Open for high-impact technical leadership roles. Currently refactoring the future of AI infrastructure.
+                    </p>
+</div>
+<div class="flex flex-col sm:flex-row gap-4">
+<button class="inline-flex items-center justify-center rounded-md bg-primary px-6 py-3 text-sm font-semibold text-white shadow-sm hover:bg-blue-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary transition-all">
+<span class="material-icons text-sm mr-2">download</span>
+                        Download System Log (CV)
+                    </button>
+<button class="inline-flex items-center justify-center rounded-md bg-transparent border border-surface-border hover:border-primary px-6 py-3 text-sm font-semibold text-gray-300 hover:text-white transition-all">
+<span class="material-icons text-sm mr-2">code</span>
+                        View GitHub
+                    </button>
+</div>
+</div>
+</div>
+</main>
+<!-- Map visualization background element (subtle) -->
+<div class="fixed bottom-0 right-0 opacity-10 pointer-events-none w-96 h-64 grayscale mix-blend-screen z-0">
+<img class="w-full h-full object-cover object-center" data-alt="Abstract blue digital world map network visualization" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA1pUvnfcveDRq5-GFMhM070eKCRKAUG-w8zk4tgrJ5YV1RYdZO84zam-k7yLDYjGIUvM4EkE4QNyo0tKmn-inU0EMnC14jQoZojM7mmJHMvZ8kgyrGoJuvQUZqvY3s5zbslDIvPW4BzQmERruX9LXjIJkqyiKl4BXe0cT36mFq_gtlMJtIfZ4kQgVzqeAj5qMTGgkagvO99zwDu0c4o--kX84sOlre0DvL05LU-eghUOpXMxglGc07IwSk0Yi_5R0qsDIpaPSSoJTN"/>
+</div>
+</body></html>
