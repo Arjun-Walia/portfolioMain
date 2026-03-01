@@ -31,7 +31,7 @@
           },
           fontFamily: {
             display: ["Bitter", "serif"],
-            mono:    ["ui-monospace", "SFMono-Regular", "monospace"],
+            mono:    ["JetBrains Mono", "ui-monospace", "monospace"],
           },
           backgroundImage: {
             "grid-dark":  "linear-gradient(to right,#1f2937 1px,transparent 1px),linear-gradient(to bottom,#1f2937 1px,transparent 1px)",
@@ -45,7 +45,7 @@
   <!-- Fonts & Icons -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Bitter:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Bitter:ital,wght@0,100..900;1,100..900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
   <link rel="icon" href="{{ url_for('static', filename='sung.jpg') }}">
@@ -296,7 +296,7 @@
 
         <div class="relative w-full h-full max-w-sm mx-auto">
           <!-- Central node -->
-          <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-40 h-40 sm:w-56 sm:h-56 bg-white dark:bg-[#161b2e]/50 backdrop-blur-xl border border-gray-200 dark:border-white/10 rounded-xl shadow-2xl flex flex-col items-center justify-center z-20 animate-float">
+          <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-40 h-40 sm:w-56 sm:h-56 bg-white/60 dark:bg-[#161b2e]/50 backdrop-blur-xl border border-gray-200 dark:border-white/10 rounded-xl shadow-2xl flex flex-col items-center justify-center z-20 animate-float">
             <div class="w-14 h-14 rounded-lg bg-primary/15 flex items-center justify-center mb-3 border border-primary/40">
               <span class="material-icons-outlined text-3xl text-primary">memory</span>
             </div>
@@ -310,11 +310,11 @@
           </div>
 
           <!-- Satellite nodes -->
-          <div class="absolute top-[18%] right-[8%] w-20 h-20 bg-white dark:bg-[#101322] border border-gray-200 dark:border-gray-700 rounded-lg shadow-lg flex items-center justify-center z-10 animate-float-delayed">
-            <span class="material-icons-outlined text-gray-500 dark:text-gray-400">storage</span>
+          <div class="absolute top-[18%] right-[8%] w-20 h-20 bg-white/60 dark:bg-[#101322] border border-gray-200 dark:border-gray-700 rounded-lg shadow-lg flex items-center justify-center z-10 animate-float-delayed">
+            <span class="material-icons-outlined text-gray-400 dark:text-gray-500">storage</span>
           </div>
-          <div class="absolute bottom-[18%] left-[4%] w-16 h-16 bg-white dark:bg-[#101322] border border-gray-200 dark:border-gray-700 rounded-lg shadow-lg flex items-center justify-center z-10 animate-float" style="animation-delay:1s">
-            <span class="material-icons-outlined text-gray-500 dark:text-gray-400">cloud_queue</span>
+          <div class="absolute bottom-[18%] left-[4%] w-16 h-16 bg-white/60 dark:bg-[#101322] border border-gray-200 dark:border-gray-700 rounded-lg shadow-lg flex items-center justify-center z-10 animate-float" style="animation-delay:1s">
+            <span class="material-icons-outlined text-gray-400 dark:text-gray-500">cloud_queue</span>
           </div>
           <div class="absolute bottom-[30%] right-[-2%] w-14 h-14 bg-primary/10 border border-primary/30 rounded-lg shadow-lg flex items-center justify-center z-10 animate-float-delayed" style="animation-delay:3s">
             <span class="material-icons-outlined text-primary text-sm">hub</span>
@@ -339,7 +339,7 @@
     </div>
 
     <!-- Tech ticker -->
-    <div class="absolute bottom-0 w-full border-t border-gray-200 dark:border-white/5 bg-white/80 dark:bg-[#121212]/40 backdrop-blur-sm py-3 overflow-hidden">
+    <div class="absolute bottom-0 w-full border-t border-gray-200/60 dark:border-white/5 bg-white/40 dark:bg-[#121212]/40 backdrop-blur-sm py-3 overflow-hidden">
       <div class="ticker-track">
         {% for _ in range(2) %}
         <div class="flex items-center gap-12 px-6 shrink-0">
