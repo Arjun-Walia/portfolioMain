@@ -2,6 +2,7 @@
 Main routes for the portfolio application.
 """
 from flask import render_template, request, redirect, url_for, flash, current_app
+from datetime import datetime
 from . import bp
 from .. import get_db
 
@@ -35,10 +36,10 @@ def contact():
         
         if form.validate_on_submit():
             try:
-                # Get database instance
+                # Get Supabase client instance
                 db = get_db()
                 if db is None:
-                    current_app.logger.error("Database connection not available")
+                    current_app.logger.error("Supabase connection not available")
                     flash('Database connection error. Please try again later.', 'error')
                     return redirect(url_for('main.index'))
                 
@@ -47,13 +48,13 @@ def contact():
                     'name': form.name.data,
                     'email': form.email.data,
                     'message': form.message.data,
-                    'timestamp': form.timestamp.data if hasattr(form, 'timestamp') else None
+                    'created_at': datetime.utcnow().isoformat()
                 }
                 
-                # Insert into database
-                result = db.contactus.insert_one(contact_doc)
+                # Insert into Supabase
+                result = db.table('contactus').insert(contact_doc).execute()
                 
-                if result.inserted_id:
+                if result.data:
                     current_app.logger.info(f"Contact form submitted by: {form.name.data} ({form.email.data})")
                     flash('Thank you for your message! I will get back to you soon.', 'success')
                 else:
@@ -89,10 +90,10 @@ def contact():
                     flash('Please enter a valid email address.', 'error')
                     return redirect(url_for('main.index'))
                 
-                # Get database instance
+                # Get Supabase client instance
                 db = get_db()
                 if db is None:
-                    current_app.logger.error("Database connection not available")
+                    current_app.logger.error("Supabase connection not available")
                     flash('Database connection error. Please try again later.', 'error')
                     return redirect(url_for('main.index'))
                 
@@ -101,13 +102,13 @@ def contact():
                     'name': name,
                     'email': email,
                     'message': message,
-                    'timestamp': None
+                    'created_at': datetime.utcnow().isoformat()
                 }
                 
-                # Insert into database
-                result = db.contactus.insert_one(contact_doc)
+                # Insert into Supabase
+                result = db.table('contactus').insert(contact_doc).execute()
                 
-                if result.inserted_id:
+                if result.data:
                     current_app.logger.info(f"Contact form submitted by: {name} ({email})")
                     flash('Thank you for your message! I will get back to you soon.', 'success')
                 else:

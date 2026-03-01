@@ -5,12 +5,11 @@ import os
 import logging
 from logging.handlers import RotatingFileHandler
 from flask import Flask, render_template
-from pymongo import MongoClient
+from supabase import create_client, Client
 
 # Will be imported after creating the config file
 csrf = None
-mongo_client = None
-db = None
+supabase: Client = None
 
 
 def create_app(config_name='development'):
@@ -44,20 +43,21 @@ def create_app(config_name='development'):
         app.logger.warning("Flask-WTF not available, CSRF protection disabled")
         csrf = None
     
-    # Initialize MongoDB
-    global mongo_client, db
+    # Initialize Supabase
+    global supabase
     try:
-        mongo_client = MongoClient(app.config['MONGODB_URI'])
-        db = mongo_client[app.config['DATABASE_NAME']]
+        supabase_url = app.config.get('SUPABASE_URL')
+        supabase_key = app.config.get('SUPABASE_KEY')
         
-        # Test connection
-        mongo_client.admin.command('ismaster')
-        app.logger.info("MongoDB connection established successfully")
+        if supabase_url and supabase_key:
+            supabase = create_client(supabase_url, supabase_key)
+            app.logger.info("Supabase connection established successfully")
+        else:
+            app.logger.warning("Supabase credentials not configured")
+            supabase = None
     except Exception as e:
-        app.logger.error(f"Failed to connect to MongoDB: {str(e)}")
-        # Don't raise in development, allow app to start
-        if config_name != 'development':
-            raise
+        app.logger.error(f"Failed to connect to Supabase: {str(e)}")
+        supabase = None
     
     # Register blueprints
     from .main import bp as main_bp
@@ -127,5 +127,5 @@ def configure_logging(app):
 
 
 def get_db():
-    """Get database instance."""
-    return db
+    """Get Supabase client instance."""
+    return supabase
