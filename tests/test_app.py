@@ -34,7 +34,6 @@ def runner(app):
 def test_config(app):
     """Test that the app is configured correctly."""
     assert app.config['TESTING'] is True
-    assert app.config['DATABASE_NAME'] == 'Portfolio_Test'
 
 
 def test_index(client):

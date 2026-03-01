@@ -7,7 +7,7 @@ import os
 try:
     from dotenv import load_dotenv
     basedir = os.path.abspath(os.path.dirname(__file__))
-    load_dotenv(os.path.join(basedir, '..', '.env'))
+    load_dotenv(os.path.join(basedir, '.env'))
 except ImportError:
     # python-dotenv not available, will use system environment variables
     pass
@@ -19,9 +19,9 @@ class Config:
     # Flask Configuration
     SECRET_KEY = os.environ.get('SECRET_KEY') or 'dev-secret-key-change-in-production'
     
-    # MongoDB Configuration
-    MONGODB_URI = os.environ.get('MONGODB_URI') or 'mongodb://localhost:27017/'
-    DATABASE_NAME = os.environ.get('DATABASE_NAME') or 'Portfolio'
+    # Supabase Configuration
+    SUPABASE_URL = os.environ.get('SUPABASE_URL')
+    SUPABASE_KEY = os.environ.get('SUPABASE_KEY')
     
     # Security Configuration
     WTF_CSRF_ENABLED = True
@@ -57,7 +57,6 @@ class TestingConfig(Config):
     DEBUG = False
     TESTING = True
     WTF_CSRF_ENABLED = False
-    DATABASE_NAME = 'Portfolio_Test'
     
     @staticmethod
     def init_app(app):
@@ -69,9 +68,6 @@ class ProductionConfig(Config):
     
     DEBUG = False
     TESTING = False
-    
-    # Override MongoDB settings for production
-    MONGODB_URI = os.environ.get('MONGODB_URI') or 'mongodb://localhost:27017/'
     
     @staticmethod
     def init_app(app):
